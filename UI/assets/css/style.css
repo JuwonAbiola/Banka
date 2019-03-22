@@ -1,5 +1,5 @@
 * {
-    font-family: 'Sunflower', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     box-sizing: border-box;
     text-decoration: none;
     color: #616770;
@@ -78,7 +78,7 @@ body {
 }
 
 .h {
-    font-size: 4.5rem;
+    font-size: 70px;
 }
 
 .h1 {
@@ -149,6 +149,20 @@ footer {
 }
 
 /* Boxes */
+/* .col-container {
+    display: flex;
+    width: 100%;
+}
+
+.col {
+    flex: 1;
+    padding: 10px;
+    margin: 20px;
+    height: 100px;
+    color: white;
+    border-radius: 30px;
+} */
+
 .boxe {
     margin-top: 50px;
     margin-bottom: 50px;
@@ -158,6 +172,10 @@ footer {
     margin-top: 20px;
     margin-bottom: 30px;
     display: flex;
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px
 }
 
 #boxes .box {
@@ -340,4 +358,5 @@ th {
 .border {
     border: 3px solid orangered;
     border-radius: .25rem;
+    margin-right: 50px;
 }
