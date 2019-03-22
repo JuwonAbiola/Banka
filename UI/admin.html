@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Banka | Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
+    <script src="assets/js/app.js"></script>
+</head>
+
+<body>
+    <section id="dashboard">
+        <div class="navbar text-orange">
+            <a class="text-orange" id='logo' href="index.html">BA₦Ka</b>
+                <a href="signup.html">Sign Up</a>
+                <a href="dashboard.html">User</a>
+                <a href="#home">Home</a>
+        </div>
+
+
+        <section class="boxe">
+            <h1 class="text-center">Welcome, Abiola Oluwajuwon Jameel</h1>
+            <br>
+            <div id="boxes">
+                <div class="box text-center">
+                    <div class="card1 ">
+                        <h1 class="text-center">
+                            Account(s):
+                        </h1>
+                        <h1 class="text-center h1 text-orange ">
+                            8
+                        </h1>
+                    </div>
+                </div>
+                <div class="box text-center">
+                    <div class="card1 text-orange">
+                        <h1 class="text-center">
+                            Available Balance:
+                        </h1>
+                        <h1 class="text-center">
+                            Available Balance:
+                        </h1>
+                    </div>
+                </div>
+                <div class="box text-center">
+                    <div class="card1 text-orange">
+                        <h1 class="text-center">
+                            Total Balance:
+                        </h1>
+                        <h1 class="text-center h1 text-orange ">
+                            ₦1,652,900
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Account Name</th>
+                <!-- <th>Type</th> -->
+                <th>Balance</th>
+                <th>Status</th>
+                <th>Details</th>
+                <th>Change Status </th>
+            </tr>
+            <tr>
+                <td>12-3-2018</td>
+                <td>Abiola Juwon</td>
+                <!-- <td>Credit</td> -->
+                <td>₦290,000</td>
+                <td id="one" class="text-green">Active</td>
+                <td><a href="details.html"><button class="btn orange text-white">View</button></a></td>
+                <td>
+                    <select class="btn" id="statusOne" onChange="getStatus('one')">
+                        <option value="" disabled>Select Status</option>
+                        <option value="Active">Activate</option>
+                        <option value="Inactive">De-Activate</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>12-3-2018</td>
+                <td>Micheal Sanni</td>
+                <!-- <td>Debit</td> -->
+                <td>₦120,500</td>
+                <td id="two" class="text-green">Active</td>
+                <td><a href="details.html"><button class="btn orange text-white">View</button></a></td>
+                <td>
+                    <select class="btn" id="statusTwo" onChange="getStatus('two')">
+                        <option value="" disabled>Select Status</option>
+                        <option value="Active">Activate</option>
+                        <option value="Inactive">De-Activate</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>12-3-2018</td>
+                <td>Daniel Imodoye</td>
+                <!-- <td>Credit</td> -->
+                <td>₦170,000</td>
+                <td id="three" class="text-green">Active</td>
+                <td><a href="details.html"><button class="btn orange text-white">View</button></a></td>
+                <td>
+                    <select class="btn" id="statusThree" onChange="getStatus('three')">
+                        <option value="" disabled>Select Status</option>
+                        <option value="Active">Activate</option>
+                        <option value="Inactive">De-Activate</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>12-3-2018</td>
+                <td>Dapo Aworeni</td>
+                <!-- <td>Debit</td> -->
+                <td>₦240,300</td>
+                <td id="four" class="text-green">Active</td>
+                <td><a href="details.html"><button class="btn orange text-white">View</button></a></td>
+                <td>
+                    <select class="btn" id="statusFour" onChange="getStatus('four')">
+                        <option value="" disabled>Select Status</option>
+                        <option value="Active">Activate</option>
+                        <option value="Inactive">De-Activate</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>12-3-2018</td>
+                <td>Tolani Aderonju</td>
+                <!-- <td>Debit</td> -->
+                <td>₦190,000</td>
+                <td id="five" class="text-green">Active</td>
+                <td><a href="details.html"><button class="btn orange text-white">View</button></a></td>
+                <td>
+                    <select class="btn" id="statusFive" onChange="getStatus('five')">
+                        <option value="" disabled>Select Status</option>
+                        <option value="Active">Activate</option>
+                        <option value="Inactive">De-Activate</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>12-3-2018</td>
+                <td>Isreal Okonta</td>
+                <!-- <td>Credit</td> -->
+                <td>₦260,800</td>
+                <td id="six" class="text-green">Active</td>
+                <td><a href="details.html"><button class="btn orange text-white">View</button></a></td>
+                <td>
+                    <select class="btn" id="statusSix" onChange="getStatus('six')">
+                        <option value="" disabled>Select Status</option>
+                        <option value="Active">Activate</option>
+                        <option value="Inactive">De-Activate</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>12-3-2018</td>
+                <td>Samuel John</td>
+                <!-- <td>Debit</td> -->
+                <td>₦170,500</td>
+                <td id="seven" class="text-green">Active</td>
+                <td><a href="details.html"><button class="btn orange text-white">View</button></a></td>
+                <td>
+                    <select class="btn" id="statusSeven" onChange="getStatus('seven')">
+                        <option value="" disabled>Select Status</option>
+                        <option value="Active">Activate</option>
+                        <option value="Inactive">De-Activate</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>12-3-2018</td>
+                <td>Josh Okobia</td>
+                <!-- <td>Credit</td> -->
+                <td>₦210,800</td>
+                <td id="eight" class="text-green">Active</td>
+                <td><a href="details.html"><button class="btn orange text-white">View</button></a></td>
+                <td>
+                    <select class="btn" id="statusEight" onChange="getStatus('eight')">
+                        <option value="" disabled>Select Status</option>
+                        <option value="Active">Activate</option>
+                        <option value="Inactive">De-Activate</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+
+    </section>
+    <footer>
+        <p class="text-white">
+            <span id="logo" class="text-white">BA₦Ka</span>
+            , Copyright &copy; 2019
+        </p>
+    </footer>
+</body>
+
+</html>
