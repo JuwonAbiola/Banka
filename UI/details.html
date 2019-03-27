@@ -7,41 +7,42 @@
     <title>Banka | Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/responsive.css">
 
     <script src="assets/js/app.js"></script>
 </head>
 
 <body>
     <section id="dashboard">
-        <div class="navbar text-orange">
-            <a class="text-orange" id='logo' href="index.html">BA₦Ka</b>
-                <a href="signup.html">Sign Up</a>
-                <a href="dashboard.html">User</a>
-                <a href="#home">Home</a>
-        </div>
-        <div id="boxes">
-            <div class="box">
-                <div class="">
-                    <img class="" src="assets/img/bavatar.png">
-
-                    <table style="width:50%" class="center">
-                        <tr>
-                            <td>Name:</td>
-                            <td>Abiola Oluwajuwon</td>
-                        </tr>
-                        <tr>
-                            <td>Account No:</td>
-                            <td>0123456789</td>
-                        </tr>
-                        <tr>
-                            <td>Email:</td>
-                            <td>me@mymail.com</td>
-                        </tr>
-                    </table>
-                </div>
+        <div class="navbar">
+            <a href="index.html" class="text-orange logo">BA₦Ka</a>
+            <div class="navbar-right">
+                <a class="text-orange" href="staff.html">Staff</a>
+                <a class="text-orange" href="dashboard.html">User</a>
+                <a class="text-orange" href="#home">Home</a>
             </div>
-            <div class="box left">
-                <div class="">
+        </div>
+        <div class="row">
+            <div class="column-66">
+                <img class="" src="assets/img/bavatar.png">
+
+                <table class="column-66 no-float center">
+                    <tr>
+                        <td>Name:</td>
+                        <td>Abiola Oluwajuwon</td>
+                    </tr>
+                    <tr>
+                        <td>Account No:</td>
+                        <td>0123456789</td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td>me@mymail.com</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="column-66 left">
+                <div class="over-f">
                     <table>
                         <tr>
                             <th>Date</th>
@@ -104,7 +105,10 @@
                             <th>₦290,800</th>
                         </tr>
                     </table>
+
                 </div>
+                <br />
+                <a href=""><button class="btn orange text-white ">Delete</button></a>
             </div>
 
         </div>

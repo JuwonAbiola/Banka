@@ -7,24 +7,28 @@
     <title>Banka | Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/responsive.css">
     <script src="assets/js/app.js"></script>
 </head>
 
 <body>
     <section id="dashboard">
-        <div class="navbar text-orange">
-            <a class="text-orange" id='logo' href="index.html">BA₦Ka</b>
-                <a href="signup.html">Sign Up</a>
-                <a href="dashboard.html">User</a>
-                <a href="#home">Home</a>
+        <div class="navbar">
+            <a href="index.html" class="text-orange logo">BA₦Ka</a>
+            <div class="navbar-right">
+                <a class="text-orange" href="add.html">Add<sup>+</sup></a>
+                <a class="text-orange" href="staff.html">Staff</a>
+                <a class="text-orange" href="dashboard.html">User</a>
+            </div>
         </div>
+
 
 
         <section class="boxe">
             <h1 class="text-center">Welcome, Abiola Oluwajuwon Jameel</h1>
             <br>
-            <div id="boxes">
-                <div class="box text-center">
+            <div class="row">
+                <div class="column-33 text-center">
                     <div class="card1 ">
                         <h1 class="text-center">
                             Account(s):
@@ -34,17 +38,17 @@
                         </h1>
                     </div>
                 </div>
-                <div class="box text-center">
+                <div class="column-33 text-center">
                     <div class="card1 text-orange">
                         <h1 class="text-center">
-                            Available Balance:
+                            Total Transactions:
                         </h1>
-                        <h1 class="text-center">
-                            Available Balance:
+                        <h1 class="text-center text-orange">
+                            ₦9,692,890
                         </h1>
                     </div>
                 </div>
-                <div class="box text-center">
+                <div class="column-33 text-center">
                     <div class="card1 text-orange">
                         <h1 class="text-center">
                             Total Balance:
@@ -56,137 +60,155 @@
                 </div>
             </div>
         </section>
-        <table>
-            <tr>
-                <th>Date</th>
-                <th>Account Name</th>
-                <!-- <th>Type</th> -->
-                <th>Balance</th>
-                <th>Status</th>
-                <th>Details</th>
-                <th>Change Status </th>
-            </tr>
-            <tr>
-                <td>12-3-2018</td>
-                <td>Abiola Juwon</td>
-                <!-- <td>Credit</td> -->
-                <td>₦290,000</td>
-                <td id="one" class="text-green">Active</td>
-                <td><a href="details.html"><button class="btn orange text-white">View</button></a></td>
-                <td>
-                    <select class="btn" id="statusOne" onChange="getStatus('one')">
-                        <option value="" disabled>Select Status</option>
-                        <option value="Active">Activate</option>
-                        <option value="Inactive">De-Activate</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>12-3-2018</td>
-                <td>Micheal Sanni</td>
-                <!-- <td>Debit</td> -->
-                <td>₦120,500</td>
-                <td id="two" class="text-green">Active</td>
-                <td><a href="details.html"><button class="btn orange text-white">View</button></a></td>
-                <td>
-                    <select class="btn" id="statusTwo" onChange="getStatus('two')">
-                        <option value="" disabled>Select Status</option>
-                        <option value="Active">Activate</option>
-                        <option value="Inactive">De-Activate</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>12-3-2018</td>
-                <td>Daniel Imodoye</td>
-                <!-- <td>Credit</td> -->
-                <td>₦170,000</td>
-                <td id="three" class="text-green">Active</td>
-                <td><a href="details.html"><button class="btn orange text-white">View</button></a></td>
-                <td>
-                    <select class="btn" id="statusThree" onChange="getStatus('three')">
-                        <option value="" disabled>Select Status</option>
-                        <option value="Active">Activate</option>
-                        <option value="Inactive">De-Activate</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>12-3-2018</td>
-                <td>Dapo Aworeni</td>
-                <!-- <td>Debit</td> -->
-                <td>₦240,300</td>
-                <td id="four" class="text-green">Active</td>
-                <td><a href="details.html"><button class="btn orange text-white">View</button></a></td>
-                <td>
-                    <select class="btn" id="statusFour" onChange="getStatus('four')">
-                        <option value="" disabled>Select Status</option>
-                        <option value="Active">Activate</option>
-                        <option value="Inactive">De-Activate</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>12-3-2018</td>
-                <td>Tolani Aderonju</td>
-                <!-- <td>Debit</td> -->
-                <td>₦190,000</td>
-                <td id="five" class="text-green">Active</td>
-                <td><a href="details.html"><button class="btn orange text-white">View</button></a></td>
-                <td>
-                    <select class="btn" id="statusFive" onChange="getStatus('five')">
-                        <option value="" disabled>Select Status</option>
-                        <option value="Active">Activate</option>
-                        <option value="Inactive">De-Activate</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>12-3-2018</td>
-                <td>Isreal Okonta</td>
-                <!-- <td>Credit</td> -->
-                <td>₦260,800</td>
-                <td id="six" class="text-green">Active</td>
-                <td><a href="details.html"><button class="btn orange text-white">View</button></a></td>
-                <td>
-                    <select class="btn" id="statusSix" onChange="getStatus('six')">
-                        <option value="" disabled>Select Status</option>
-                        <option value="Active">Activate</option>
-                        <option value="Inactive">De-Activate</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>12-3-2018</td>
-                <td>Samuel John</td>
-                <!-- <td>Debit</td> -->
-                <td>₦170,500</td>
-                <td id="seven" class="text-green">Active</td>
-                <td><a href="details.html"><button class="btn orange text-white">View</button></a></td>
-                <td>
-                    <select class="btn" id="statusSeven" onChange="getStatus('seven')">
-                        <option value="" disabled>Select Status</option>
-                        <option value="Active">Activate</option>
-                        <option value="Inactive">De-Activate</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>12-3-2018</td>
-                <td>Josh Okobia</td>
-                <!-- <td>Credit</td> -->
-                <td>₦210,800</td>
-                <td id="eight" class="text-green">Active</td>
-                <td><a href="details.html"><button class="btn orange text-white">View</button></a></td>
-                <td>
-                    <select class="btn" id="statusEight" onChange="getStatus('eight')">
-                        <option value="" disabled>Select Status</option>
-                        <option value="Active">Activate</option>
-                        <option value="Inactive">De-Activate</option>
-                    </select>
-                </td>
-            </tr>
-        </table>
+        <div class="over-f">
+            <table>
+                <tr>
+                    <th>Date</th>
+                    <th>Account Name</th>
+                    <!-- <th>Type</th> -->
+                    <th>Balance</th>
+                    <th>Status</th>
+                    <th>Details</th>
+                    <th>Change Status </th>
+                </tr>
+                <tr>
+                    <td>12-3-2018</td>
+                    <td>Abiola Juwon</td>
+                    <!-- <td>Credit</td> -->
+                    <td>₦290,000</td>
+                    <td id="one" class="text-green">Active</td>
+                    <td><a href="details.html"><button class="btn orange text-white">View</button></a></td>
+                    <td>
+                        <select class="btn" id="statusOne" onChange="getStatus('one')">
+                            <option value="" disabled>Select Status</option>
+                            <option value="Active">Activate</option>
+                            <option value="Inactive">De-Activate</option>
+                            <option value="Deleted">Delete</option>
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>12-3-2018</td>
+                    <td>Micheal Sanni</td>
+                    <!-- <td>Debit</td> -->
+                    <td>₦120,500</td>
+                    <td id="two" class="text-green">Active</td>
+                    <td><a href="details.html"><button class="btn orange text-white">View</button></a></td>
+                    <td>
+                        <select class="btn" id="statusTwo" onChange="getStatus('two')">
+                            <option value="" disabled>Select Status</option>
+                            <option value="Active">Activate</option>
+                            <option value="Inactive">De-Activate</option>
+                            <option value="Deleted">Delete</option>
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>12-3-2018</td>
+                    <td>Daniel Imodoye</td>
+                    <!-- <td>Credit</td> -->
+                    <td>₦170,000</td>
+                    <td id="three" class="text-green">Active</td>
+                    <td><a href="details.html"><button class="btn orange text-white">View</button></a></td>
+                    <td>
+                        <select class="btn" id="statusThree" onChange="getStatus('three')">
+                            <option value="" disabled>Select Status</option>
+                            <option value="Active">Activate</option>
+                            <option value="Inactive">De-Activate</option>
+                            <option value="Deleted">Delete</option>
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>12-3-2018</td>
+                    <td>Dapo Aworeni</td>
+                    <!-- <td>Debit</td> -->
+                    <td>₦240,300</td>
+                    <td id="four" class="text-green">Active</td>
+                    <td><a href="details.html"><button class="btn orange text-white">View</button></a></td>
+                    <td>
+                        <select class="btn" id="statusFour" onChange="getStatus('four')">
+                            <option value="" disabled>Select Status</option>
+                            <option value="Active">Activate</option>
+                            <option value="Inactive">De-Activate</option>
+                            <option value="Deleted">Delete</option>
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>12-3-2018</td>
+                    <td>Tolani Aderonju</td>
+                    <!-- <td>Debit</td> -->
+                    <td>₦190,000</td>
+                    <td id="five" class="text-green">Active</td>
+                    <td><a href="details.html"><button class="btn orange text-white">View</button></a></td>
+                    <td>
+                        <select class="btn" id="statusFive" onChange="getStatus('five')">
+                            <option value="" disabled>Select Status</option>
+                            <option value="Active">Activate</option>
+                            <option value="Inactive">De-Activate</option>
+                            <option value="Deleted">Delete</option>
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>12-3-2018</td>
+                    <td>Isreal Okonta</td>
+                    <!-- <td>Credit</td> -->
+                    <td>₦260,800</td>
+                    <td id="six" class="text-green">Active</td>
+                    <td><a href="details.html"><button class="btn orange text-white">View</button></a></td>
+                    <td>
+                        <select class="btn" id="statusSix" onChange="getStatus('six')">
+                            <option value="" disabled>Select Status</option>
+                            <option value="Active">Activate</option>
+                            <option value="Inactive">De-Activate</option>
+                            <option value="Deleted">Delete</option>
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>12-3-2018</td>
+                    <td>Samuel John</td>
+                    <!-- <td>Debit</td> -->
+                    <td>₦170,500</td>
+                    <td id="seven" class="text-green">Active</td>
+                    <td><a href="details.html"><button class="btn orange text-white">View</button></a></td>
+                    <td>
+                        <select class="btn" id="statusSeven" onChange="getStatus('seven')">
+                            <option value="" disabled>Select Status</option>
+                            <option value="Active">Activate</option>
+                            <option value="Inactive">De-Activate</option>
+                            <option value="Deleted">Delete</option>
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>12-3-2018</td>
+                    <td>Josh Okobia</td>
+                    <!-- <td>Credit</td> -->
+                    <td>₦210,800</td>
+                    <td id="eight" class="text-green">Active</td>
+                    <td><a href="details.html"><button class="btn orange text-white">View</button></a></td>
+                    <td>
+                        <select class="btn" id="statusEight" onChange="getStatus('eight')">
+                            <option value="" disabled>Select Status</option>
+                            <option value="Active">Activate</option>
+                            <option value="Inactive">De-Activate</option>
+                            <option value="Deleted">Delete</option>
+
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
     </section>
     <footer>

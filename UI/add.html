@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Banka | Add</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
+    <script src="assets/js/app.js"></script>
+</head>
+
+<body>
+
+    <div class="toppad">
+        <h1 class="text-center text-orange">
+            <a id="logo" href="index.html">BA₦Ka</a></h1>
+        <h2 class="text-center text-grey">Add Staff or Admin to <span id="logo">BA₦Ka</span></h2>
+        <div class="form-card">
+            <!-- <form action="action_page.php"> -->
+            <div class="container">
+                <label for="email"><b>Please select position</b></label>
+                <select class="btn" id="statusFour" onChange="">
+                    <option value="" disabled selected>Select Position</option>
+                    <option value="Admin">Admin</option>
+                    <option value="Staff">Staff</option>
+                </select>
+                <label for="email"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="usr" required>
+
+                <label for="psw"><b>E-mail</b></label>
+                <input type="text" placeholder="Enter email" name="psw" required>
+
+                <label for="psw-repeat"><b>Password</b></label>
+                <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+                <hr>
+                <button id="login" onclick="add()" class="registerbtn">Add</b></button>
+            </div>
+            <!-- </form> -->
+        </div>
+        <br />
+        <div class="other_option text-center">
+            <p>Want to go back? <a href="admin.html">Click Here</a>.</p>
+        </div>
+    </div>
+</body>
+
+</html>

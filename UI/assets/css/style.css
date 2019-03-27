@@ -11,46 +11,42 @@ body {
     margin: 0;
 }
 
-
 /* navbar */
 .navbar {
     overflow: hidden;
-    top: 0;
+    padding: 20px 10px;
     font-weight: bold;
-    width: 100%;
-}
-
-/* top pad */
-.tpad {
-    margin-bottom: 60px;
 }
 
 .navbar a {
-    float: right;
-    display: block;
+    float: left;
     text-align: center;
-    padding: 25px;
+    padding: 12px;
     text-decoration: none;
-    font-size: 17px;
-    font-weight: bold;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+}
+
+.navbar a.logo {
+    font-size: 35px;
+    font-family: 'Srisakdi', cursive;
+    font-weight: bolder;
 }
 
 .navbar a:hover {
     font-weight: bolder;
 }
 
-#logo {
-    font-family: 'Srisakdi', cursive;
-    font-weight: bolder;
+.navbar a.active {
+    background-color: dodgerblue;
+    color: #fff;
 }
 
-.navbar #logo {
-    font-family: 'Srisakdi', cursive;
-    font-size: 35px;
-    font-weight: bolder;
-    padding-top: 25px;
-    float: left;
+.navbar-right {
+    float: right;
 }
+
 
 /* first-Section */
 #backgroundImg {
@@ -60,8 +56,7 @@ body {
         url(../img/get_started.jpg);
     border-bottom-right-radius: 20%;
     background-size: cover;
-    text-align: center;
-    padding: 0 60px;
+    padding: 0 2.5%;
     font-size: 1.5rem;
     color: #fff;
 }
@@ -72,17 +67,21 @@ body {
     border-bottom-right-radius: 20%;
     background-size: cover;
     text-align: center;
-    padding: 0 60px;
+    padding: 0 2.5%;
     font-size: 1.5rem;
     color: #fff;
 }
 
-.h {
-    font-size: 70px;
+.med-font {
+    font-size: 36px;
 }
 
-.h1 {
-    font-size: 3rem;
+.large-font {
+    font-size: 48px;
+}
+
+.xlarge-font {
+    font-size: 70px;
 }
 
 footer {
@@ -113,7 +112,7 @@ footer {
     height: 70%;
     border-radius: 5px;
     border: 3px solid orangered;
-    margin: 0 auto;
+    margin: 4px auto;
 }
 
 .card1 {
@@ -131,7 +130,7 @@ footer {
 }
 
 .form-card {
-    width: 20%;
+    width: 400px;
     padding: 1rem;
     background-color: #ffff;
     border: 1px solid #eee;
@@ -144,24 +143,38 @@ footer {
     border: 1px solid #eee;
     border-radius: 10px;
     padding: 15px;
-    width: 20%;
+    width: 300px;
     margin: 0 auto;
 }
 
-/* Boxes */
-/* .col-container {
-    display: flex;
-    width: 100%;
+/* column */
+.row:after {
+    content: "";
+    display: table;
+    clear: both
 }
 
-.col {
-    flex: 1;
-    padding: 10px;
-    margin: 20px;
-    height: 100px;
-    color: white;
-    border-radius: 30px;
-} */
+.column-55 {
+    float: left;
+    width: 55.55555%;
+    padding: 20px;
+}
+
+.column-44 {
+    float: left;
+    width: 44.44444%;
+    padding: 20px;
+}
+
+.column-66 {
+    float: left;
+    width: 50%;
+}
+
+.column-33 {
+    float: left;
+    width: 33.33333%;
+}
 
 .boxe {
     margin-top: 50px;
@@ -191,7 +204,7 @@ footer {
 
 /* alignment */
 .center {
-    margin: 0 auto;
+    margin: 0 auto !important;
 }
 
 .left {
@@ -203,7 +216,8 @@ footer {
 
 /* input fields */
 input[type=text],
-input[type=password] {
+input[type=password],
+select {
     width: 100%;
     padding: 16px 20px;
     margin: 8px 0;
@@ -215,7 +229,8 @@ input[type=password] {
 }
 
 input[type=text]:focus,
-input[type=password]:focus {
+input[type=password]:focus,
+select:focus {
     background-color: #ddd;
     outline: none;
 }
@@ -359,4 +374,34 @@ th {
     border: 3px solid orangered;
     border-radius: .25rem;
     margin-right: 50px;
+}
+
+
+/* The popup form - hidden by default */
+.form-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    margin-left: 50%;
+    margin-bottom: 1%;
+    border: 3px solid #f1f1f1;
+}
+
+/* Add styles to the form container */
+.form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+}
+
+.toppad {
+    padding: 3% 0;
+}
+
+.over-f {
+    overflow-x: auto;
+}
+
+.no-float {
+    float: none;
 }
