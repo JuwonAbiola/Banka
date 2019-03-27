@@ -1,0 +1,43 @@
+/*__ Media Queries */
+
+@media screen and (max-width: 1000px) {
+
+    .column-55,
+    .column-44,
+    .column-66,
+    .column-33 {
+        width: 100%;
+        text-align: center;
+    }
+
+    img {
+        margin: auto;
+    }
+
+    .navbar a {
+        float: none;
+        display: block;
+        text-align: right;
+    }
+
+    .navbar a.logo {
+        float: left;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    /* table */
+    th,
+    td {
+        text-align: left;
+        padding: 8px;
+        font-size: 20px;
+    }
+
+    .form-card,
+    .form-card1 {
+        width: 400px !important;
+    }
+}
