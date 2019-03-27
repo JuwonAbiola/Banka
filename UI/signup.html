@@ -10,32 +10,33 @@
     <script src="assets/js/app.js"></script>
 </head>
 
-<body style="padding:3rem 0">
+<body>
+    <div class="toppad">
+        <h1 class="text-center text-orange">
+            <a id="logo" href="index.html">BA₦Ka</a></h1>
+        <h2 class="text-center text-grey">Register to <span id="logo">BA₦Ka</span></h2>
 
-    <h1 class="text-center text-orange">
-        <a id="logo" href="index.html">BA₦Ka</a></h1>
-    <h2 class="text-center text-grey">Register to <span id="logo">BA₦Ka</span></h2>
+        <div class="form-card">
+            <form action="">
+                <div class="container">
+                    <label for="email"><b>Email</b></label>
+                    <input type="text" placeholder="Enter Email" name="email" required>
 
-    <div class="form-card">
-        <form action="">
-            <div class="container">
-                <label for="email"><b>Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" required>
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" required>
 
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
+                    <label for="psw-repeat"><b>Repeat Password</b></label>
+                    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+                    <hr>
 
-                <label for="psw-repeat"><b>Repeat Password</b></label>
-                <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-                <hr>
-
-                <button type="submit" onclick="signUp()" class="registerbtn">Register</button>
-            </div>
-        </form>
-    </div>
-    <br />
-    <div class="other_option text-center">
-        <p>Already have an account? <a href="login.html">Sign In</a>.</p>
+                    <button type="submit" onclick="signUp()" class="registerbtn">Register</button>
+                </div>
+            </form>
+        </div>
+        <br />
+        <div class="other_option text-center">
+            <p>Already have an account? <a href="login.html">Sign In</a>.</p>
+        </div>
     </div>
 </body>
 

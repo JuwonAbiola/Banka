@@ -1,3 +1,10 @@
+function openForm() {
+    document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+}
 const login = () => {
     location.href = "dashboard.html";
 };
@@ -30,7 +37,7 @@ function getStatus(element) {
                 default:
                     document.getElementById(
                         "one"
-                    ).innerHTML = `<span style="color:black">Select Status</span>`;
+                    ).innerHTML = `<span style="color:grey">Deleted</span>`;
                     break;
             }
         case "two":
@@ -56,7 +63,7 @@ function getStatus(element) {
                     default:
                         document.getElementById(
                             "two"
-                        ).innerHTML = `<span style="color:black">Select Status</span>`;
+                        ).innerHTML = `<span style="color:grey">Deleted</span>`;
                         break;
                 }
             }
@@ -83,7 +90,7 @@ function getStatus(element) {
                     default:
                         document.getElementById(
                             "three"
-                        ).innerHTML = `<span style="color:black">Select Status</span>`;
+                        ).innerHTML = `<span style="color:grey">Deleted</span>`;
                         break;
                 }
             }
@@ -110,7 +117,7 @@ function getStatus(element) {
                     default:
                         document.getElementById(
                             "four"
-                        ).innerHTML = `<span style="color:black">Select Status</span>`;
+                        ).innerHTML = `<span style="color:grey">Deleted</span>`;
                         break;
                 }
             }
@@ -137,7 +144,7 @@ function getStatus(element) {
                     default:
                         document.getElementById(
                             "five"
-                        ).innerHTML = `<span style="color:black">Select Status</span>`;
+                        ).innerHTML = `<span style="color:grey">Deleted</span>`;
                         break;
                 }
             }
@@ -164,7 +171,7 @@ function getStatus(element) {
                     default:
                         document.getElementById(
                             "six"
-                        ).innerHTML = `<span style="color:black">Select Status</span>`;
+                        ).innerHTML = `<span style="color:grey">Deleted</span>`;
                         break;
                 }
             }
@@ -191,7 +198,7 @@ function getStatus(element) {
                     default:
                         document.getElementById(
                             "seven"
-                        ).innerHTML = `<span style="color:black">Select Status</span>`;
+                        ).innerHTML = `<span style="color:grey">Deleted</span>`;
                         break;
                 }
             }
@@ -218,7 +225,7 @@ function getStatus(element) {
                     default:
                         document.getElementById(
                             "eight"
-                        ).innerHTML = `<span style="color:black">Select Status</span>`;
+                        ).innerHTML = `<span style="color:grey">Deleted</span>`;
                         break;
                 }
             }
