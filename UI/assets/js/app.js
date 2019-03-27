@@ -10,7 +10,7 @@ const login = () => {
 };
 
 const signUp = () => {
-    location.href = "dashboard.html";
+    location.href = "account.html";
 };
 
 function getStatus(element) {

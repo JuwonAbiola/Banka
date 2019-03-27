@@ -47,6 +47,10 @@ body {
     float: right;
 }
 
+#logo {
+    font-family: 'Srisakdi', cursive;
+    font-weight: bolder;
+}
 
 /* first-Section */
 #backgroundImg {
@@ -129,13 +133,18 @@ footer {
     margin: 0 0 !important;
 }
 
-.form-card {
+.form-card,
+.form-card1 {
     width: 400px;
     padding: 1rem;
     background-color: #ffff;
     border: 1px solid #eee;
     border-radius: 5px;
     margin: 0 auto;
+}
+
+.form-card1 {
+    width: 600px !important;
 }
 
 .other_option {
@@ -197,11 +206,6 @@ footer {
     max-height: 700px
 }
 
-#boxes .box img {
-    /* width: 150px;
-    height: 150px; */
-}
-
 /* alignment */
 .center {
     margin: 0 auto !important;
@@ -216,6 +220,7 @@ footer {
 
 /* input fields */
 input[type=text],
+input[type=date],
 input[type=password],
 select {
     width: 100%;
@@ -374,24 +379,6 @@ th {
     border: 3px solid orangered;
     border-radius: .25rem;
     margin-right: 50px;
-}
-
-
-/* The popup form - hidden by default */
-.form-popup {
-    display: none;
-    position: fixed;
-    bottom: 0;
-    margin-left: 50%;
-    margin-bottom: 1%;
-    border: 3px solid #f1f1f1;
-}
-
-/* Add styles to the form container */
-.form-container {
-    max-width: 300px;
-    padding: 10px;
-    background-color: white;
 }
 
 .toppad {
