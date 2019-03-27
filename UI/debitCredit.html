@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Banka | Debit or Credit</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
+    <script src="assets/js/app.js"></script>
+</head>
+
+<body>
+
+    <div class="toppad">
+        <h1 class="text-center text-orange">
+            <a id="logo" href="index.html">BA₦Ka</a></h1>
+        <h2 class="text-center text-grey"> <span id="logo"></span></h2>
+        <div class="form-card">
+            <!-- <form action="action_page.php"> -->
+            <div class="container">
+                <label for="email"><b>Credit or Debit</b></label>
+                <select class="btn" id="statusFour" onChange="">
+                    <option value="" disabled selected>Select Action</option>
+                    <option value="Credit">Credit</option>
+                    <option value="Debit">Debit</option>
+                </select>
+                <label for="email"><b>Amount</b></label>
+                <input type="text" placeholder="Enter Amount" name="amt" required>
+                <hr>
+                <button id="login" onclick="add()" class="registerbtn">Add</b></button>
+            </div>
+            <!-- </form> -->
+        </div>
+        <br />
+        <div class="other_option text-center">
+            <p>Want to go back? <a href="staff.html">Click Here</a>.</p>
+        </div>
+    </div>
+</body>
+
+</html>
