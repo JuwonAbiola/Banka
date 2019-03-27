@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Banka | Account Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
+    <script src="assets/js/app.js"></script>
+</head>
+
+<body>
+
+    <div class="toppad">
+        <h1 class="text-center text-orange">
+            <a id="logo" href="index.html">BA₦Ka</a></h1>
+        <h2 class="text-center text-grey">Account Registration</h2>
+        <div class="form-card1">
+            <!-- <form action="action_page.php"> -->
+            <div class="container">
+                <label><b>Please select Account Type</b></label>
+                <select class="btn" id="statusFour" onChange="">
+                    <option value="" disabled selected>Select Account Type</option>
+                    <option value="Current Account">Current Account</option>
+                    <option value="Savings Account">Savings Account</option>
+                </select>
+                <label><b>Full Name</b></label>
+                <input type="text" placeholder="Enter Name" required>
+                <label><b>Gender</b></label>
+                <select class="btn" id="statusFour" onChange="">
+                    <option value="" disabled selected>Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select> <label><b>E-mail</b></label>
+                <label><b>E-mail</b></label>
+                <input type="text" placeholder="Enter email" required>
+                <label><b>Phone Number</b></label>
+                <input type="text" placeholder="Enter Phone Number" required>
+                <label><b>Home Address</b></label>
+                <input type="text" placeholder="Enter Home Address" required>
+                <label><b>Citizenship</b></label>
+                <input type="text" placeholder="Enter Citizenship" required>
+                <label><b>Date Of Birth</b></label>
+                <input type="date" placeholder="Enter email" required>
+                <label><b>Marital Status</b></label>
+                <select class="btn" id="statusFour" onChange="">
+                    <option value="" disabled selected>Select Marital Status</option>
+                    <option value="Married">Married</option>
+                    <option value="Single">Single</option>
+                </select>
+                <label><b>Language</b></label>
+                <input type="text" placeholder="Enter Language" required>
+
+                <hr>
+                <button id="login" onclick="login()" class="registerbtn">Submit</button>
+            </div>
+            <!-- </form> -->
+        </div>
+        <br />
+        <div class="other_option text-center">
+            <p>Want to go back? <a href="admin.html">Click Here</a>.</p>
+        </div>
+    </div>
+</body>
+
+</html>
