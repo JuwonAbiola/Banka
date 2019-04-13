@@ -42,8 +42,8 @@ class accountController {
   static updateAccount(req, res) {
     const account = accounts.find(num => num.accountNumber === parseInt(req.params.accountNumber));
     if (!account) {
-      return res.status(404).json({
-        status: 404,
+      return res.status(400).json({
+        status: 400,
         error: 'Account not found',
       });
     }
@@ -60,8 +60,8 @@ class accountController {
   static deleteAccount(req, res) {
     const account = accounts.find(num => num.accountNumber === parseInt(req.params.accountNumber));
     if (!account) {
-      return res.status(404).json({
-        status: 404,
+      return res.status(400).json({
+        status: 400,
         error: 'Account not found',
       });
     }
@@ -77,9 +77,9 @@ class accountController {
 
   static listAccount(req, res) {
     return res
-      .status(201)
+      .status(200)
       .json({
-        status: 201,
+        status: 200,
         message: 'List of accounts',
         data: accounts,
       });
@@ -88,14 +88,13 @@ class accountController {
   static singleAccount(req, res) {
     const account = accounts.find(num => num.accountNumber === parseInt(req.params.accountNumber));
     if (!account) {
-      return res.status(404).json({
-        status: 404,
+      return res.status(400).json({
+        status: 400,
         error: 'Account not found',
       });
     }
     return res.status(200).json({
       status: 200,
-      message: `${account.lastName} ${account.firstName}`,
       data: account,
     });
   }

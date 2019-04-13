@@ -24,6 +24,7 @@ class UserMiddleware {
         message: 'Please fill all fields',
       });
     }
+
     validate
       .validateUser(req.body)
       .then(() => next())

@@ -13,8 +13,8 @@ class transactionController {
     const accountNum = req.params.accountNumber;
     const account = accounts.find(num => num.accountNumber === parseInt(accountNum));
     if (!account) {
-      return res.status(404).json({
-        status: 404,
+      return res.status(400).json({
+        status: 400,
         error: 'Account not found',
       });
     }
@@ -38,8 +38,8 @@ class transactionController {
     account.openingBalance = accountBalance;
     accounts.push(account);
     transactions.push(transaction);
-    return res.status(201).json({
-      status: 201,
+    return res.status(200).json({
+      status: 200,
       data: transaction,
     });
   }
@@ -48,8 +48,8 @@ class transactionController {
     const accountNum = req.params.accountNumber;
     const account = accounts.find(num => num.accountNumber === parseInt(accountNum));
     if (!account) {
-      return res.status(404).json({
-        status: 404,
+      return res.status(400).json({
+        status: 400,
         error: 'Account not found',
       });
     }
