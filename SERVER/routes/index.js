@@ -10,7 +10,13 @@ import transactionMiddleware from '../middlewares/transactionMiddleware';
 
 const router = express.Router();
 const { loginUser, registerUser } = UserController;
-const { createAccount, updateAccount, deleteAccount } = accountController;
+const {
+  createAccount,
+  updateAccount,
+  deleteAccount,
+  listAccount,
+  singleAccount,
+} = accountController;
 const { debitAccount, creditAccount } = transactionController;
 const { validateLogin, validateSignup } = UserMiddleware;
 const { validateAccount, validateUpdate } = accountMiddleware;
@@ -22,18 +28,11 @@ router.post('/auth/signin', validateLogin, loginUser);
 router.post('/accounts', validateAccount, createAccount);
 
 // Admin & Staff Routes
-router.get('/accounts/');
+router.get('/accounts/', listAccount);
+router.get('/accounts/:accountNumber', singleAccount);
 router.patch('/accounts/:accountNumber', validateUpdate, updateAccount);
 router.delete('/accounts/:accountNumber', deleteAccount);
-router.post(
-  '/accounts/:accountNumber/debit',
-  validateTransaction,
-  debitAccount,
-);
-router.post(
-  '/accounts/:accountNumber/credit',
-  validateTransaction,
-  creditAccount,
-);
+router.post('/accounts/:accountNumber/debit', validateTransaction, debitAccount);
+router.post('/accounts/:accountNumber/credit', validateTransaction, creditAccount);
 
 export default router;
