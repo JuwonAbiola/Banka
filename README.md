@@ -1,3 +1,8 @@
+[![Coverage Status](https://coveralls.io/repos/github/oluwajhay/Banka/badge.svg?branch=ch-create-dummy-data-endpoints-165307084)](https://coveralls.io/github/oluwajhay/Banka?branch=ch-create-dummy-data-endpoints-165307084)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/fdd4247c44db13d3e088/maintainability)](https://codeclimate.com/github/oluwajhay/Banka/maintainability)
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/fdd4247c44db13d3e088/test_coverage)](https://codeclimate.com/github/oluwajhay/Banka/test_coverage)
 # Banka
 
 Banka is a light-weight core banking application that powers banking operations like account creation, customer deposit and withdrawals.

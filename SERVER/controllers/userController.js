@@ -14,7 +14,7 @@ class UserController {
     if (user) {
       return res.status(400).json({
         status: 400,
-        error: 'Email already registered',
+        error: 'User already exist',
       });
     }
 
@@ -40,7 +40,7 @@ class UserController {
     res.header('Authorization', token).status(201);
     res.json({
       status: 201,
-      message: 'Registered successfully',
+      message: 'Registration successful',
       data: {
         token,
         id: user.id,
@@ -81,7 +81,7 @@ class UserController {
     });
     res.json({
       status: 200,
-      message: 'Logged in successfully',
+      message: 'Login successful',
       data: {
         token,
         id: user.id,

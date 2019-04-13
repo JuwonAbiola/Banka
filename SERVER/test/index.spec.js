@@ -19,7 +19,7 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
         })
         .end((err, res) => {
           res.should.have.status(201);
-          res.body.should.have.property('message').to.equals('Registered successfully');
+          res.body.should.have.property('message').to.equals('Registration successful');
           res.body.should.have.property('status').to.equals(201);
           res.body.should.have.property('data');
         });
@@ -37,7 +37,7 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
         })
         .end((err, res) => {
           res.should.have.status(400);
-          res.body.should.have.property('error').to.equals('Email already registered');
+          res.body.should.have.property('error').to.equals('User already exist');
           res.body.should.have.property('status').to.equals(400);
         });
     });
@@ -54,7 +54,7 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
         })
         .end((err, res) => {
           res.should.have.status(200);
-          res.body.should.have.property('message').to.equals('Logged in successfully');
+          res.body.should.have.property('message').to.equals('Login successful');
           res.body.should.have.property('status').to.equals(200);
           res.body.should.have.property('data');
         });
@@ -88,7 +88,7 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
         })
         .end((err, res) => {
           res.should.have.status(201);
-          res.body.should.have.property('message').to.equals('Account created successfully');
+          res.body.should.have.property('message').to.equals('Account created');
           res.body.should.have.property('status').to.equals(201);
           res.body.should.have.property('data');
         });
@@ -106,7 +106,7 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
         .end((err, res) => {
           res.should.have.status(400);
           res.body.should.have.property('status').to.equals(400);
-          res.body.should.have.property('error').to.equals('Please sign up before creating account');
+          res.body.should.have.property('error').to.equals('sign up before creating account');
         });
     });
   });
@@ -115,13 +115,13 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
     it('it should PATCH user account', () => {
       chai
         .request(server)
-        .patch('/api/v1/accounts/7767637188')
+        .patch('/api/v1/accounts/4952853906')
         .send({
           status: 'dormant',
         })
         .end((err, res) => {
           res.should.have.status(200);
-          res.body.should.have.property('message').to.equals('Updated successfully');
+          res.body.should.have.property('message').to.equals('Account updated');
           res.body.should.have.property('status').to.equals(200);
           res.body.should.have.property('data');
         });

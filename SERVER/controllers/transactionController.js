@@ -11,7 +11,7 @@ import transactions from '../dummyData/transaction';
 class transactionController {
   static debitAccount(req, res) {
     const accountNum = req.params.accountNumber;
-    const account = accounts.find(accnt => accnt.accountNumber === parseInt(accountNum));
+    const account = accounts.find(num => num.accountNumber === parseInt(accountNum));
     if (!account) {
       return res.status(404).json({
         status: 404,
@@ -46,7 +46,7 @@ class transactionController {
 
   static creditAccount(req, res) {
     const accountNum = req.params.accountNumber;
-    const account = accounts.find(accnt => accnt.accountNumber === parseInt(accountNum));
+    const account = accounts.find(num => num.accountNumber === parseInt(accountNum));
     if (!account) {
       return res.status(404).json({
         status: 404,
