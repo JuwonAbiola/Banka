@@ -137,7 +137,7 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
         .end((err, res) => {
           res.should.have.status(404);
           res.body.should.have.property('status').to.equals(404);
-          res.body.should.have.property('error').to.equals('Account with the given account number is not found');
+          res.body.should.have.property('error').to.equals('Account not found');
         });
     });
   });
@@ -145,10 +145,10 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
   describe('DELETE REQUEST', () => {
     it('it should DELETE account', () => {
       chai.request(server)
-        .delete('/api/v1/accounts/7767637188')
+        .delete('/api/v1/accounts/4952853906')
         .end((err, res) => {
           res.should.have.status(200);
-          res.body.should.have.property('message').to.equals('Account successfulluy deleted');
+          res.body.should.have.property('message').to.equals('Account deleted');
           res.body.should.have.property('status').to.equals(200);
         });
     });
@@ -158,7 +158,7 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
         .delete('/api/v1/accounts/2345566767')
         .end((err, res) => {
           res.should.have.status(404);
-          res.body.should.have.property('error').to.equals('Account with the given account number is not found');
+          res.body.should.have.property('error').to.equals('Account not found');
           res.body.should.have.property('status').to.equals(404);
         });
     });
