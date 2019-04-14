@@ -7,7 +7,8 @@ Banka is a light-weight core banking application that powers banking operations 
 
 * [UI](https://oluwajhay.github.io/Banka/UI/index.html)<br>
 * [Pivotal Tracker Board](https://www.pivotaltracker.com/n/projects/2320527)
-
+* [Heroku](https://banka-server.herokuapp.com/
+)
 ### Required Features
 * Users can create an sign up and log in.
 * Users can create bank account.
