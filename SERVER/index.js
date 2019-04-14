@@ -10,7 +10,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/api/v1', version);
-app.get('/', (req, res) => res.send({ message: 'Welcome to Banka' }).status(200));
+app.get('/', (req, res) => res.send({ message: 'Welcome to BANKa' }).status(200));
 app.listen(port);
 
 export default app;
