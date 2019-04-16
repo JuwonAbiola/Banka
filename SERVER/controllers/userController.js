@@ -13,8 +13,8 @@ class UserController {
   static registerUser(req, res) {
     let user = users.find(check => check.email === req.body.email);
     if (user) {
-      return res.status(404).json({
-        status: 404,
+      return res.status(400).json({
+        status: 400,
         error: 'User already exist',
       });
     }

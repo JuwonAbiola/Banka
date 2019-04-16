@@ -30,16 +30,6 @@ class accountValidation {
 
     return joi.validate(update, updateSchema);
   }
-
-  static account() {
-    const account = accounts.find(num => num.accountNumber === parseInt(req.params.accountNumber));
-    if (!account) {
-      return res.status(400).json({
-        status: 400,
-        error: 'Account not found',
-      });
-    }
-  }
 }
 
 export default accountValidation;

@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import version from './version/v1';
 
 const app = express();
-const port = process.env.NODE_ENV || 5000;
+const port = process.env.NODE_ENV || 7000;
 
 app.use(logger('dev'));
 app.use(bodyParser.json());

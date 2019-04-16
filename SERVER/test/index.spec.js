@@ -109,9 +109,9 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
           password: 'password',
         })
         .end((err, res) => {
-          res.should.have.status(400);
-          res.body.should.have.property('error').to.equals('Incorrect email');
-          res.body.should.have.property('status').to.equals(400);
+          res.should.have.status(404);
+          res.body.should.have.property('error').to.equals('User not found');
+          res.body.should.have.property('status').to.equals(404);
         });
     });
 
@@ -124,9 +124,9 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
           password: 'passwordde',
         })
         .end((err, res) => {
-          res.should.have.status(400);
-          res.body.should.have.property('error').to.equals('Incorrect password');
-          res.body.should.have.property('status').to.equals(400);
+          res.should.have.status(404);
+          res.body.should.have.property('error').to.equals('User not found');
+          res.body.should.have.property('status').to.equals(404);
         });
     });
 
@@ -217,11 +217,23 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
           status: 'dormant',
         })
         .end((err, res) => {
-          res.should.have.status(400);
-          res.body.should.have.property('status').to.equals(400);
+          res.should.have.status(404);
+          res.body.should.have.property('status').to.equals(404);
           res.body.should.have.property('error').to.equals('Account not found');
         });
     });
+  });
+
+  it('it should fail PATCH user account', () => {
+    chai
+      .request(server)
+      .patch('/api/v1/accounts/7767637187')
+      .send({})
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.have.property('message').to.equals('Please fill all fields');
+        res.body.should.have.property('status').to.equals(400);
+      });
   });
 
   describe('/POST REQUEST', () => {
@@ -255,8 +267,8 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
         })
         .end((err, res) => {
           // console.log(res);
-          res.should.have.status(400);
-          res.body.should.have.property('status').to.equals(400);
+          res.should.have.status(404);
+          res.body.should.have.property('status').to.equals(404);
           res.body.should.have.property('error').to.equals('Account not found');
         });
     });
@@ -318,8 +330,8 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
         })
         .end((err, res) => {
           // console.log(res);
-          res.should.have.status(400);
-          res.body.should.have.property('status').to.equals(400);
+          res.should.have.status(404);
+          res.body.should.have.property('status').to.equals(404);
           res.body.should.have.property('error').to.equals('Account not found');
         });
     });
@@ -394,8 +406,8 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
       chai.request(server)
         .get('/api/v1/accounts/4952853786')
         .end((err, res) => {
-          res.should.have.status(400);
-          res.body.should.have.property('status').to.equals(400);
+          res.should.have.status(404);
+          res.body.should.have.property('status').to.equals(404);
           res.body.should.have.property('error').to.equals('Account not found');
         });
     });
@@ -416,9 +428,9 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
       chai.request(server)
         .delete('/api/v1/accounts/2345566767')
         .end((err, res) => {
-          res.should.have.status(400);
+          res.should.have.status(404);
           res.body.should.have.property('error').to.equals('Account not found');
-          res.body.should.have.property('status').to.equals(400);
+          res.body.should.have.property('status').to.equals(404);
         });
     });
   });
