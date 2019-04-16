@@ -13,8 +13,8 @@ class transactionController {
     const accountNum = req.params.accountNumber;
     const account = accounts.find(num => num.accountNumber === parseInt(accountNum));
     if (!account) {
-      return res.status(400).json({
-        status: 400,
+      return res.status(404).json({
+        status: 404,
         error: 'Account not found',
       });
     }
@@ -48,8 +48,8 @@ class transactionController {
     const accountNum = req.params.accountNumber;
     const account = accounts.find(num => num.accountNumber === parseInt(accountNum));
     if (!account) {
-      return res.status(400).json({
-        status: 400,
+      return res.status(404).json({
+        status: 404,
         error: 'Account not found',
       });
     }

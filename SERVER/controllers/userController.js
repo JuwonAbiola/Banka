@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable consistent-return */
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
@@ -12,8 +13,8 @@ class UserController {
   static registerUser(req, res) {
     let user = users.find(check => check.email === req.body.email);
     if (user) {
-      return res.status(400).json({
-        status: 400,
+      return res.status(404).json({
+        status: 404,
         error: 'User already exist',
       });
     }
@@ -53,23 +54,13 @@ class UserController {
   }
 
   static loginUser(req, res) {
-    const user = users.find(check => check.email === req.body.email);
+    const user = users.find(check => check.email === req.body.email && bcrypt.compareSync(req.body.password, check.password));
     if (!user) {
-      return res.status(400).json({
-        status: 400,
-        error: 'Incorrect email',
+      return res.status(404).json({
+        status: 404,
+        error: 'User not found',
       });
     }
-
-    const check = bcrypt.compareSync(req.body.password, user.password);
-    if (!check) {
-      return res.status(400).json({
-        status: 400,
-        error: 'Incorrect password',
-      });
-    }
-
-    // Generate token
     const payload = {
       id: user.id,
       firstName: user.firstName,

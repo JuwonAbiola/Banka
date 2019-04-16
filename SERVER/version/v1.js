@@ -1,11 +1,10 @@
-import { Router } from 'express';
+import Router from 'express';
 import routes from '../routes/index';
 
 const api = Router();
-
 api.get('/', (req, res) => res.send({
   ok: true,
-  message: 'Welcome to Andela',
+  message: 'Welcome to BANKa',
   status: 'API version 1',
 }));
 

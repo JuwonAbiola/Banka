@@ -14,6 +14,8 @@ class accountMiddleware {
      * @param {function} next - middleware next (for error handling)
      * @return {json} res.json
      */
+
+
   static validateAccount(req, res, next) {
     if (Object.keys(req.body).length === 0) {
       return res.status(400).json({
