@@ -203,7 +203,7 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
         })
         .end((err, res) => {
           res.should.have.status(200);
-          res.body.should.have.property('message').to.equals('Account updated');
+          res.body.should.have.property('message').to.equals('Account Updated');
           res.body.should.have.property('status').to.equals(200);
           res.body.should.have.property('data');
         });

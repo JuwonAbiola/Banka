@@ -1,5 +1,8 @@
+/* eslint-disable radix */
 /* eslint-disable consistent-return */
 import validate from '../helpers/account-validation';
+
+
 /**
  *
  * @exports
@@ -30,6 +33,7 @@ class accountMiddleware {
         message: err.details[0].message,
       }));
   }
+
 
   static validateUpdate(req, res, next) {
     if (Object.keys(req.body).length === 0) {
