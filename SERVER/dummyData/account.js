@@ -15,7 +15,7 @@ const accounts = [{
   lastName: 'daniel',
   email: 'dandave@gmail.com',
   openingBalance: '5678909.33',
-  status: 'active',
+  status: 'dormant',
 }];
 
 export default accounts;

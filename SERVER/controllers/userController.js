@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable max-len */
 /* eslint-disable consistent-return */
 import jwt from 'jsonwebtoken';
@@ -24,8 +25,10 @@ class UserController {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
+      phone: req.body.phone,
       type: req.body.type,
       password: bcrypt.hashSync(req.body.password),
+      token,
     };
     users.push(user);
 
@@ -48,6 +51,7 @@ class UserController {
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
+        phone: user.phone,
         password: user.password,
       },
     });

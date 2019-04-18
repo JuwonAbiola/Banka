@@ -47,6 +47,13 @@ class transactionController {
   static creditAccount(req, res) {
     checker.accountnumCheck(req)
       .then((result) => {
+        if (result.status === 'dormant') {
+          return res.status(400).json({
+            status: 400,
+            error: 'This account is Dormant',
+          });
+        }
+
         if (result.openingBalance < req.body.amount) {
           return res.status(400).json({
             status: 400,
