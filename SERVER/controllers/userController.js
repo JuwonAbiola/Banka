@@ -1,3 +1,5 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable max-len */
 /* eslint-disable consistent-return */
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
@@ -23,14 +25,19 @@ class UserController {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
+      phone: req.body.phone,
       type: req.body.type,
+      isAdmin: req.body.isAdmin,
       password: bcrypt.hashSync(req.body.password),
+      token,
     };
     users.push(user);
 
     const payload = {
       email: user.email,
       type: user.type,
+      id: user.id,
+      isAdmin: user.isAdmin,
     };
 
     const token = jwt.sign(payload, 'privatekey', {
@@ -47,34 +54,27 @@ class UserController {
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
+        phone: user.phone,
         password: user.password,
+        type: user.type,
+        isAdmin: user.isAdmin,
       },
     });
   }
 
   static loginUser(req, res) {
-    const user = users.find(check => check.email === req.body.email);
+    const user = users.find(check => check.email === req.body.email && bcrypt.compareSync(req.body.password, check.password));
     if (!user) {
-      return res.status(400).json({
-        status: 400,
-        error: 'Incorrect email',
+      return res.status(404).json({
+        status: 404,
+        error: 'User not found',
       });
     }
-
-    const check = bcrypt.compareSync(req.body.password, user.password);
-    if (!check) {
-      return res.status(400).json({
-        status: 400,
-        error: 'Incorrect password',
-      });
-    }
-
-    // Generate token
     const payload = {
-      id: user.id,
-      firstName: user.firstName,
-      lastName: user.lastName,
       email: user.email,
+      type: user.type,
+      id: user.id,
+      isAdmin: user.isAdmin,
     };
     const token = jwt.sign(payload, 'privatekey', {
       expiresIn: '24h',
@@ -88,6 +88,9 @@ class UserController {
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
+        type: user.type,
+        isAdmin: user.isAdmin,
+
       },
     });
   }

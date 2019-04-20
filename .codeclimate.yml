@@ -23,7 +23,7 @@ checks:
   method-lines:
     enabled: true
     config:
-      threshold: 25
+      threshold: 50
   nested-control-flow:
     enabled: true
     config:
@@ -33,7 +33,7 @@ checks:
     config:
       threshold: 4
   similar-code:
-    enabled: true
+    enabled: false
     config:
       threshold: #language-specific defaults. overrides affect all languages.
   identical-code:
@@ -41,19 +41,19 @@ checks:
     config:
       threshold: #language-specific defaults. overrides affect all languages.
 plugins:
- rubocop:
-  enabled: true
- eslint:
-  enabled: true
+  rubocop:
+    enabled: true
+  eslint:
+    enabled: true
 exclude_patterns:
-- "config/"
-- "db/"
-- "dist/"
-- "features/"
-- "**/node_modules/"
-- "script/"
-- "**/spec/"
-- "**/test/"
-- "**/tests/"
-- "**/vendor/"
-- "**/*.d.ts"
+  - "config/"
+  - "db/"
+  - "dist/"
+  - "features/"
+  - "**/node_modules/"
+  - "script/"
+  - "**/spec/"
+  - "**/test/"
+  - "**/tests/"
+  - "**/vendor/"
+  - "**/*.d.ts"
