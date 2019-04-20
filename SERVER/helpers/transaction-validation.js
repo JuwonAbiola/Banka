@@ -5,7 +5,6 @@ class transactionValidation {
     const transactionSchema = {
       type: Joi.string().valid('debit', 'credit'),
       accountNumber: Joi.string().min(5),
-      cashier: Joi.number().required(),
       amount: Joi.number().required(),
       accountBalance: Joi.number(),
     };

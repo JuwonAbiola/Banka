@@ -1,9 +1,36 @@
+/* eslint-disable prefer-destructuring */
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../index';
 
 chai.use(chaiHttp);
 chai.should();
+
+let token = '';
+const tokens = '';
+
+
+before(() => {
+  it('it should login user', (done) => {
+    chai
+      .request(server)
+      .post('/api/v1/auth/signup')
+      .send({
+        firstName: 'juwon',
+        lastName: 'jhay',
+        email: 'juwon@gmail.com',
+        password: 'password',
+        type: 'staff',
+        isAdmin: 'true',
+      })
+      .end((err, res) => {
+        token = res.body.data.token;
+        res.body.should.have.property('status').to.equals(201);
+        res.body.should.have.property('data').to.be.an('object');
+        done();
+      });
+  });
+});
 
 describe('UNIT TESTS DATA CONTROLLERS', () => {
   describe('/GET REQUEST', () => {
@@ -19,24 +46,25 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
   });
 
   describe('/POST REQUEST', () => {
-    it('it should POST user sign up', () => {
-      chai
-        .request(server)
-        .post('/api/v1/auth/signup')
-        .send({
-          firstName: 'juwon',
-          lastName: 'jhay',
-          email: 'juwon@gmail.com',
-          password: 'password',
-        })
-        .end((err, res) => {
-
-          res.should.have.status(201);
-          res.body.should.have.property('message').to.equals('Registration successful');
-          res.body.should.have.property('status').to.equals(201);
-          res.body.should.have.property('data');
-        });
-    });
+    // it('it should POST user sign up', () => {
+    //   chai
+    //     .request(server)
+    //     .post('/api/v1/auth/signup')
+    //     .send({
+    //       firstName: 'juwon',
+    //       lastName: 'jhay',
+    //       email: 'juwon@gmail.com',
+    //       password: 'password',
+    //       type: 'staff',
+    //       isAdmin: 'true',
+    //     })
+    //     .end((err, res) => {
+    //       res.should.have.status(201);
+    //       res.body.should.have.property('message').to.equals('Registration successful');
+    //       res.body.should.have.property('status').to.equals(201);
+    //       res.body.should.have.property('data');
+    //     });
+    // });
 
     it('it should fail POST user sign up', () => {
       chai
@@ -47,6 +75,8 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
           lastName: 'jhay',
           email: 'juwon@gmail.com',
           password: 'password',
+          type: 'staff',
+          isAdmin: 'true',
         })
         .end((err, res) => {
           res.should.have.status(400);
@@ -163,6 +193,7 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
       chai
         .request(server)
         .post('/api/v1/accounts')
+        .set('x-access-token', token)
         .send({
           email: 'juwon@gmail.com',
           type: 'current',
@@ -181,12 +212,15 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
       chai
         .request(server)
         .post('/api/v1/accounts')
+        .set('x-access-token', token)
         .send({
           email: 'juwonfew@gmail.com',
           type: 'current',
           openingBalance: 32333,
         })
         .end((err, res) => {
+          // console.log(res);
+
           res.should.have.status(400);
           res.body.should.have.property('status').to.equals(400);
           res.body.should.have.property('error').to.equals('sign up before creating account');
@@ -199,6 +233,7 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
       chai
         .request(server)
         .patch('/api/v1/accounts/4952853906')
+        .set('x-access-token', token)
         .send({
           status: 'dormant',
         })
@@ -214,6 +249,7 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
       chai
         .request(server)
         .patch('/api/v1/accounts/7767637187')
+        .set('x-access-token', token)
         .send({
           status: 'dormant',
         })
@@ -229,8 +265,10 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
     chai
       .request(server)
       .patch('/api/v1/accounts/7767637187')
+      .set('x-access-token', token)
       .send({})
       .end((err, res) => {
+        // console.log(res);
         res.should.have.status(400);
         res.body.should.have.property('message').to.equals('Please fill all fields');
         res.body.should.have.property('status').to.equals(400);
@@ -238,46 +276,46 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
   });
 
   describe('/POST REQUEST', () => {
-    it('it should credit an account ', () => {
-      const accountNumber = 4952853906;
+    it('it should credit an account 1', () => {
       chai
         .request(server)
 
-        .post(`/api/v1/accounts/${accountNumber}/credit`)
+        .post('/api/v1/accounts/3108008131/credit')
+        .set('x-access-token', token)
+
         .send({
           amount: 33200,
-          cashier: 1,
         })
         .end((err, res) => {
           // console.log(res);
-          // res.should.have.status(200);
-          // res.body.should.have.property('status').to.equals(200);
-          // res.body.should.have.property('data').to.be.an('object');
+          res.should.have.status(200);
+          res.body.should.have.property('status').to.equals(200);
+          res.body.should.have.property('data').to.be.an('object');
         });
     });
 
 
-    it('it should fail to credit an account ', () => {
+    it('it should fail to credit an account2', () => {
       chai
         .request(server)
 
         .post('/api/v1/accounts/495285339306/credit')
+        .set('x-access-token', token)
         .send({
           amount: 33200,
-          cashier: 1,
         })
         .end((err, res) => {
-          // console.log(res);
           res.should.have.status(404);
           res.body.should.have.property('status').to.equals(404);
           res.body.should.have.property('error').to.equals('Account not found');
         });
     });
 
-    it('it should fail to credit an account', () => {
+    it('it should fail to credit an account3', () => {
       chai
         .request(server)
         .post('/api/v1/accounts/495285339306/credit')
+        .set('x-access-token', token)
         .send({})
         .end((err, res) => {
           res.should.have.status(400);
@@ -286,16 +324,16 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
         });
     });
 
-    it('it should fail to credit an account', () => {
+    it('it should fail to credit an account4', () => {
       chai
         .request(server)
         .post('/api/v1/accounts/495285339306/credit')
+        .set('x-access-token', token)
         .send({
-          cashier: '',
           amount: 222,
         })
         .end((err, res) => {
-          res.should.have.status(400);
+          res.should.have.status(404);
           res.body.should.be.a('object');
         });
     });
@@ -303,14 +341,13 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
 
   describe('/POST REQUEST', () => {
     it('it should debit an account ', () => {
-      const accountNumber = 4952853906;
       chai
         .request(server)
 
-        .post(`/api/v1/accounts/${accountNumber}/debit`)
+        .post('/api/v1/accounts/3108008131/debit')
+        .set('x-access-token', token)
         .send({
           amount: 33200,
-          cashier: 1,
         })
         .end((err, res) => {
           // console.log(res);
@@ -325,9 +362,9 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
         .request(server)
 
         .post('/api/v1/accounts/495285339306/debit')
+        .set('x-access-token', token)
         .send({
           amount: 3200,
-          cashier: 1,
         })
         .end((err, res) => {
           // console.log(res);
@@ -342,9 +379,9 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
         .request(server)
 
         .post('/api/v1/accounts/4952853906/debit')
+        .set('x-access-token', token)
         .send({
           amount: 332002920,
-          cashier: 1,
         })
         .end((err, res) => {
           // console.log(res);
@@ -358,6 +395,7 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
       chai
         .request(server)
         .post('/api/v1/accounts/495285339306/debit')
+        .set('x-access-token', token)
         .send({})
         .end((err, res) => {
           res.should.have.status(400);
@@ -370,6 +408,7 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
       chai
         .request(server)
         .post('/api/v1/accounts/495285339306/debit')
+        .set('x-access-token', token)
         .send({
           cashier: '',
           amount: 222,
@@ -385,6 +424,7 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
     it('it should get accounts ', () => {
       chai.request(server)
         .get('/api/v1/accounts')
+        .set('x-access-token', token)
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.have.property('status').to.equals(200);
@@ -396,6 +436,7 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
     it('it should get accounts ', () => {
       chai.request(server)
         .get('/api/v1/accounts/4952853906')
+        .set('x-access-token', token)
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.have.property('status').to.equals(200);
@@ -406,6 +447,7 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
     it('it should get accounts ', () => {
       chai.request(server)
         .get('/api/v1/accounts/4952853786')
+        .set('x-access-token', token)
         .end((err, res) => {
           res.should.have.status(404);
           res.body.should.have.property('status').to.equals(404);
@@ -418,6 +460,7 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
     it('it should DELETE account', () => {
       chai.request(server)
         .delete('/api/v1/accounts/4952853906')
+        .set('x-access-token', token)
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.have.property('message').to.equals('Account deleted');
@@ -428,6 +471,8 @@ describe('UNIT TESTS DATA CONTROLLERS', () => {
     it('it should return error', () => {
       chai.request(server)
         .delete('/api/v1/accounts/2345566767')
+        .set('x-access-token', token)
+
         .end((err, res) => {
           res.should.have.status(404);
           res.body.should.have.property('error').to.equals('Account not found');

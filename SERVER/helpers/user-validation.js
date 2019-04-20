@@ -33,8 +33,10 @@ class userValidation {
         .required(),
       phone: joi
         .number()
-        .min(1)
+        .min(11)
         .max(11),
+      type: joi.string().valid('client', 'staff').required(),
+      isAdmin: joi.boolean().required(),
       password: joi
         .string()
         .min(6)

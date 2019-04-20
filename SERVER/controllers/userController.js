@@ -27,6 +27,7 @@ class UserController {
       email: req.body.email,
       phone: req.body.phone,
       type: req.body.type,
+      isAdmin: req.body.isAdmin,
       password: bcrypt.hashSync(req.body.password),
       token,
     };
@@ -35,6 +36,8 @@ class UserController {
     const payload = {
       email: user.email,
       type: user.type,
+      id: user.id,
+      isAdmin: user.isAdmin,
     };
 
     const token = jwt.sign(payload, 'privatekey', {
@@ -53,6 +56,8 @@ class UserController {
         email: user.email,
         phone: user.phone,
         password: user.password,
+        type: user.type,
+        isAdmin: user.isAdmin,
       },
     });
   }
@@ -66,10 +71,10 @@ class UserController {
       });
     }
     const payload = {
-      id: user.id,
-      firstName: user.firstName,
-      lastName: user.lastName,
       email: user.email,
+      type: user.type,
+      id: user.id,
+      isAdmin: user.isAdmin,
     };
     const token = jwt.sign(payload, 'privatekey', {
       expiresIn: '24h',
@@ -83,6 +88,9 @@ class UserController {
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
+        type: user.type,
+        isAdmin: user.isAdmin,
+
       },
     });
   }

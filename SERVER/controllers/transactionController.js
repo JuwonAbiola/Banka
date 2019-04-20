@@ -4,6 +4,7 @@ import moment from 'moment';
 import accounts from '../dummyData/account';
 import transactions from '../dummyData/transaction';
 import checker from '../helpers/checker';
+import users from '../dummyData/user';
 
 /**
  * @exports
@@ -25,7 +26,7 @@ class transactionController {
           transactionId: transactions.length + 1,
           accountNumber: req.params.accountNumber,
           amount: req.body.amount,
-          cashier: req.body.cashier,
+          cashier: req.decoded.id,
           transactionType: 'debit',
           date: moment().format('LL'),
           time: moment().format('hh:mm'),
@@ -53,20 +54,13 @@ class transactionController {
             error: 'This account is Dormant',
           });
         }
-
-        if (result.openingBalance < req.body.amount) {
-          return res.status(400).json({
-            status: 400,
-            error: 'Insuficient balance',
-          });
-        }
         const accountBalance = result.openingBalance + parseInt(req.body.amount);
         const transaction = {
           transactionId: transactions.length + 1,
           accountNumber: req.params.accountNumber,
           amount: req.body.amount,
-          cashier: req.body.cashier,
-          transactionType: 'debit',
+          cashier: req.decoded.id,
+          transactionType: 'credit',
           date: moment().format('LL'),
           time: moment().format('hh:mm'),
           accountBalance: String(accountBalance),
