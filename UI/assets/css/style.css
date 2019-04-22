@@ -5,13 +5,13 @@
     color: #616770;
 }
 
-
-
 body {
     margin: 0;
 }
 
+
 /* navbar */
+
 .navbar {
     overflow: hidden;
     padding: 20px 10px;
@@ -52,12 +52,12 @@ body {
     font-weight: bolder;
 }
 
+
 /* first-Section */
+
 #backgroundImg {
     min-height: 850px;
-    background:
-        linear-gradient(to bottom right, rgba(243, 156, 18, 0.9), rgba(192, 57, 43, 1.0)),
-        url(../img/get_started.jpg);
+    background: linear-gradient(to bottom right, rgba(243, 156, 18, 0.9), rgba(192, 57, 43, 1.0)), url(../img/get_started.jpg);
     border-bottom-right-radius: 20%;
     background-size: cover;
     padding: 0 2.5%;
@@ -99,15 +99,13 @@ footer {
     color: #ffffff;
     text-align: center;
     margin-top: 20px;
-    background:
-        linear-gradient(to bottom right, rgba(243, 156, 18, 0.9), rgba(192, 57, 43, 1.0)),
-        url(../img/get_started.jpg);
+    background: linear-gradient(to bottom right, rgba(243, 156, 18, 0.9), rgba(192, 57, 43, 1.0)), url(../img/get_started.jpg);
     border-top-left-radius: 70%;
 }
 
 
-
 /* cards */
+
 .card,
 .card1 {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -125,9 +123,8 @@ footer {
 
 .card,
 .card1:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
 }
-
 
 .no-auto {
     margin: 0 0 !important;
@@ -156,7 +153,9 @@ footer {
     margin: 0 auto;
 }
 
+
 /* column */
+
 .row:after {
     content: "";
     display: table;
@@ -206,7 +205,9 @@ footer {
     max-height: 700px
 }
 
+
 /* alignment */
+
 .center {
     margin: 0 auto !important;
 }
@@ -219,6 +220,7 @@ footer {
 
 
 /* input fields */
+
 input[type=text],
 input[type=date],
 input[type=password],
@@ -230,7 +232,6 @@ select {
     border: none;
     background: #f1f1f1;
     border-radius: .25rem;
-
 }
 
 input[type=text]:focus,
@@ -240,13 +241,17 @@ select:focus {
     outline: none;
 }
 
+
 /* Overwrite default styles of hr */
+
 hr {
     border: 1px solid #f1f1f1;
     margin-bottom: 25px;
 }
 
+
 /* button */
+
 .btn {
     border: 1px solid black;
     padding: 14px 28px;
@@ -254,7 +259,9 @@ hr {
     cursor: pointer;
 }
 
+
 /* Set a style for the submit button */
+
 .registerbtn {
     background-color: orangered;
     color: white;
@@ -265,19 +272,19 @@ hr {
     width: 100%;
     opacity: 0.9;
     border-radius: .25rem;
-
 }
 
 .registerbtn:hover {
     opacity: 1;
 }
 
+
 /* transparent */
+
 .transparent {
     border-color: #fff;
     color: #fff;
     background-color: transparent;
-
 }
 
 .transparent:hover {
@@ -286,16 +293,21 @@ hr {
     background-color: #fff;
 }
 
+
 /* Add orange text color to links */
+
 a {
     color: orangered;
 }
 
+
 /* Set a grey background color and center the text of the "sign in" section */
+
 .signin {
     background-color: #f1f1f1;
     text-align: center;
 }
+
 
 /* Color */
 
@@ -313,14 +325,15 @@ a {
 
 .grey {
     background-color: #616770;
-
 }
 
 .green {
     background-color: green;
 }
 
+
 /* texts */
+
 .text-center {
     text-align: center;
 }
@@ -346,7 +359,9 @@ a {
     font-weight: bold;
 }
 
+
 /* table */
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -369,7 +384,9 @@ th {
     color: white;
 }
 
+
 /* avatar */
+
 .avatar {
     width: 50%;
     /* height: 20%; */
@@ -391,4 +408,47 @@ th {
 
 .no-float {
     float: none;
+}
+
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: #616770;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination a.active {
+    background-color: orangered;
+    color: white;
+    border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 5px;
+}
+
+.myInput {
+    background-image: url('/css/searchicon.png');
+    background-position: 10px 12px;
+    background-repeat: no-repeat;
+    width: 30% !important;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+}
+
+.bottom {
+    margin-bottom: 2%;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }

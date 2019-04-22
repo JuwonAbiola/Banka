@@ -16,9 +16,9 @@
         <div class="navbar">
             <a href="index.html" class="text-orange logo">BA₦Ka</a>
             <div class="navbar-right">
-                <a class="text-orange" href="signup.html">Sign Up</a>
-                <a class="text-orange" href="admin.html">Admin</a>
-                <a class="text-orange" href="#home">Home</a>
+                <a class="text-orange" href="account.html">Account<sup>+</sup></a>
+                <a class="text-orange" href="admin.html">Admin<sup></sup></a>
+                <a class="text-orange" href="staff.html">Staff<sup></sup></a>
             </div>
         </div>
         <div class="row">
@@ -50,8 +50,13 @@
                 </div>
             </div>
         </div>
-        <h1>Transaction History</h1>
+
+
         <div class="over-f">
+            <h1 class="bottom">Transaction History</h1>
+
+            <input type="text" class="myInput" style="float:right" onkeyup="myFunction()" placeholder="Search for account..." title="">
+
             <table>
                 <tr>
                     <th>Date</th>
@@ -107,13 +112,28 @@
                     <td>Debit</td>
                     <td>₦7,800</td>
                 </tr>
+                <tr>
+                    <th>Balance:</th>
+                    <th></th>
+                    <th></th>
+                    <th>₦290,800</th>
+                </tr>
             </table>
+        </div>
+        <br/>
+        <div class="pagination">
+            <a href="#">&laquo;</a>
+            <a href="#">1</a>
+            <a href="#" class="active">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+
+            <a href="#">&raquo;</a>
         </div>
     </section>
     <footer>
         <p class="text-white">
-            <span id="logo" class="text-white">BA₦Ka</span>
-            , Copyright &copy; 2019
+            <span id="logo" class="text-white">BA₦Ka</span> , Copyright &copy; 2019
         </p>
     </footer>
 </body>
