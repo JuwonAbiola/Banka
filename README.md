@@ -1,4 +1,4 @@
-[![Coverage Status](https://coveralls.io/repos/github/oluwajhay/Banka/badge.svg?branch=ch-create-dummy-data-endpoints-165307084)](https://coveralls.io/github/oluwajhay/Banka?branch=ch-create-dummy-data-endpoints-165307084) [![Maintainability](https://api.codeclimate.com/v1/badges/fdd4247c44db13d3e088/maintainability)](https://codeclimate.com/github/oluwajhay/Banka/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/fdd4247c44db13d3e088/test_coverage)](https://codeclimate.com/github/oluwajhay/Banka/test_coverage) [![Build Status](https://travis-ci.com/oluwajhay/Banka.svg?branch=ch-create-dummy-data-endpoints-165307084)](https://travis-ci.com/oluwajhay/Banka)
+[![Coverage Status](https://coveralls.io/repos/github/oluwajhay/Banka/badge.svg?branch=ch-create-dummy-data-endpoints-165307084)](https://coveralls.io/github/oluwajhay/Banka?branch=ch-create-dummy-data-endpoints-165307084) [![Maintainability](https://api.codeclimate.com/v1/badges/fdd4247c44db13d3e088/maintainability)](https://codeclimate.com/github/oluwajhay/Banka/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/fdd4247c44db13d3e088/test_coverage)](https://codeclimate.com/github/oluwajhay/Banka/test_coverage) [![Build Status](https://travis-ci.com/oluwajhay/Banka.svg?branch=ch-create-dummy-data-endpoints-165307084)](https://travis-ci.com/oluwajhay/Banka) [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 # Banka
 
 Banka is a light-weight core banking application that powers banking operations like account creation, customer deposit and withdrawals.
@@ -7,7 +7,8 @@ Banka is a light-weight core banking application that powers banking operations 
 
 * [UI](https://oluwajhay.github.io/Banka/UI/index.html)<br>
 * [Pivotal Tracker Board](https://www.pivotaltracker.com/n/projects/2320527)
-
+* [Heroku](https://banka-server.herokuapp.com/
+)
 ### Required Features
 * Users can create an sign up and log in.
 * Users can create bank account.

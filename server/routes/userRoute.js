@@ -4,8 +4,14 @@ import UserMiddleware from '../middlewares/UserMiddleware';
 
 const userouter = express.Router();
 
-const { loginUser, registerUser } = UserController;
-const { validateLogin, validateSignup } = UserMiddleware;
+const {
+    loginUser,
+    registerUser
+} = UserController;
+const {
+    validateLogin,
+    validateSignup
+} = UserMiddleware;
 
 userouter.post('/auth/signup', validateSignup, registerUser);
 userouter.post('/auth/signin', validateLogin, loginUser);

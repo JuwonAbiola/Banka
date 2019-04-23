@@ -4,7 +4,8 @@
     "description": "Banka is a light-weight core banking application that powers banking operations like account creation, customer deposit and withdrawals.",
     "main": "index.js",
     "scripts": {
-        "start": "nodemon --exec babel-node SERVER/index.js",
+        "start": "babel-node  SERVER/index.js",
+        "start:dev": "nodemon --exec babel-node SERVER/index.js",
         "test": "nyc mocha --recursive --require @babel/register SERVER/test  --exit",
         "coverage": "nyc report --reporter=text-lcov | coveralls",
         "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test"
@@ -28,9 +29,15 @@
         "nyc": "^13.3.0"
     },
     "dependencies": {
+        "@babel/cli": "^7.4.3",
+        "@babel/core": "^7.4.3",
+        "@babel/node": "^7.2.2",
+        "@babel/preset-env": "^7.4.3",
+        "@babel/register": "^7.4.0",
         "bcryptjs": "^2.4.3",
         "body-parser": "^1.18.3",
         "chai-http": "^4.2.1",
+        "dotenv": "^7.0.0",
         "express": "^4.16.4",
         "joi": "^14.3.1",
         "jsonwebtoken": "^8.5.1",
