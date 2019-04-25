@@ -1,8 +1,5 @@
-/* eslint-disable max-len */
-/* eslint-disable consistent-return */
-import jwt from 'jsonwebtoken';
-import bcrypt from 'bcryptjs';
-import users from '../dummyData/user';
+import UserService from '../services/UserService';
+
 
 /**
  * @exports
@@ -10,77 +7,44 @@ import users from '../dummyData/user';
  */
 
 class UserController {
-  static registerUser(req, res) {
-    let user = users.find(check => check.email === req.body.email);
-    if (user) {
-      return res.status(400).json({
-        status: 400,
-        error: 'User already exist',
+  static createUser(req, res) {
+    UserService
+      .saveUser(req.body)
+      .then(response => res.status(201).json(response))
+      .catch((err) => {
+        console.log(err);
+        if (err.rowCount >= 1) {
+          return res.status(400).json({
+            status: 400,
+            message: `User with this email ${
+              err.rows[0].email
+            } exists already`,
+          });
+        }
+        return res.status(400).json({
+          message: 'Could not save user',
+        });
       });
-    }
-
-    user = {
-      id: users.length + 1,
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email,
-      type: req.body.type,
-      password: bcrypt.hashSync(req.body.password),
-    };
-    users.push(user);
-
-    const payload = {
-      email: user.email,
-      type: user.type,
-    };
-
-    const token = jwt.sign(payload, 'privatekey', {
-      expiresIn: '24h',
-    });
-
-    res.header('Authorization', token).status(201);
-    res.json({
-      status: 201,
-      message: 'Registration successful',
-      data: {
-        token,
-        id: user.id,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-        password: user.password,
-      },
-    });
   }
 
+  /**
+     * Lofin a new user
+     * @staticmethod
+     * @param  {object} req - user object
+     * @param {object} res - Response object
+     * @return {json} res.json
+     */
   static loginUser(req, res) {
-    const user = users.find(check => check.email === req.body.email && bcrypt.compareSync(req.body.password, check.password));
-    if (!user) {
-      return res.status(404).json({
-        status: 404,
-        error: 'User not found',
-      });
-    }
-    const payload = {
-      id: user.id,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-    };
-    const token = jwt.sign(payload, 'privatekey', {
-      expiresIn: '24h',
-    });
-    res.json({
-      status: 200,
-      message: 'Login successful',
-      data: {
-        token,
-        id: user.id,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-      },
-    });
+    const {
+      email,
+      password,
+    } = req.body;
+    UserService
+      .validateUserLogin(email, password)
+      .then(response => res.status(200).json(response))
+      .catch(err => res.status(400).json({
+        responseMessage: err,
+      }));
   }
 }
 

@@ -15,7 +15,7 @@ api.use((req, res, next) => {
   next();
 });
 
-api.use((req, res) => res.status(404).send({
+api.use((req, res) => res.status(400).send({
   message: 'Sorry that route/method doesnt exist',
 }));
 
