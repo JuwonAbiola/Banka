@@ -15,13 +15,13 @@ class userValidation {
 
   static validateUser(user) {
     const userSchema = {
-      firstName: joi
+      firstname: joi
         .string().regex(/^[A-Za-z]*$/).error(() => 'please enter a valid First name not less than 3 letters')
         .min(3)
         .trim()
         .required(),
 
-      lastName: joi
+      lastname: joi
         .string().regex(/^[A-Za-z]*$/).error(() => 'please enter a valid Last name not less than 3 letters')
         .min(3)
         .trim()
@@ -31,12 +31,8 @@ class userValidation {
         .email()
         .trim()
         .required(),
-      phone: joi
-        .number()
-        .min(11)
-        .max(11),
       type: joi.string().valid('client', 'staff').required(),
-      isAdmin: joi.boolean().required(),
+      is_admin: joi.boolean().required(),
       password: joi
         .string()
         .min(6)
