@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import chai from 'chai';
 import chaiHttp from 'chai-http';

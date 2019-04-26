@@ -87,14 +87,11 @@ class UserService {
         .then((res) => {
           const {
             password,
-            id,
-            type,
-            is_admin,
           } = res.rows[0];
           passwordValidator
             .compare(userpassword, password)
             .then(() => {
-              const token = jwt.sign({ user_id: id, type, is_admin }, config.jwtSecretKey, {
+              const token = jwt.sign(res.rows[0], config.jwtSecretKey, {
                 expiresIn: 86400,
               });
               const object = {

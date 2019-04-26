@@ -3,7 +3,6 @@ CREATE TABLE users
     id SERIAL PRIMARY KEY,
     firstname VARCHAR (50) NOT NULL,
     lastname VARCHAR (50) NOT NULL,
-    othername VARCHAR (50) NOT NULL,
     email VARCHAR (50) UNIQUE NOT NULL,
     password VARCHAR (50) NOT NULL,
     registered_at VARCHAR (55) NOT NULL,
@@ -24,12 +23,11 @@ CREATE TABLE accounts
 CREATE TABLE transactions
 (
     id SERIAL PRIMARY KEY,
-    createdOn VARCHAR (50) NOT NULL,
-    type VARCHAR (50) NOT NULL,
-    accountNumber INT NOT NULL,
-    FOREIGN KEY (accountNumber) REFERENCES accounts(accountNumber),   
-    cashier VARCHAR (50) UNIQUE NOT NULL,
-    amount VARCHAR (50) NOT NULL,
-    oldBalance VARCHAR (55) NOT NULL,
-    newBalance VARCHAR (55) NOT NULL
+    created_on VARCHAR (250) NOT NULL,  
+    type VARCHAR (250)  NOT NULL,
+    account_number VARCHAR (250) NOT NULL,
+    cashier VARCHAR (250) NOT NULL, 
+    amount VARCHAR (250)  NOT NULL,
+    old_balance VARCHAR (250) NOT NULL,
+    new_balance VARCHAR (250) NOT NULL
 );

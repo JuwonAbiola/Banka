@@ -1,5 +1,7 @@
 /* eslint-disable consistent-return */
 import jwt from 'jsonwebtoken';
+import config from '../config/index';
+
 /**
  * @exports
  * @class TokenMiddleware
@@ -18,7 +20,7 @@ class TokenMiddleware {
     // check header or url parameters or post parameters for token
     const token = req.headers['x-access-token'];
     if (token) {
-      jwt.verify(token, 'privatekey', (err, decoded) => {
+      jwt.verify(token, config.jwtSecretKey, (err, decoded) => {
         if (err) {
           return res
             .status(400)
