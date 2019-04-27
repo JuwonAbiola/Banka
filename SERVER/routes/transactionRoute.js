@@ -15,10 +15,10 @@ const {
 } = transactionController;
 const { validateTransaction } = transactionMiddleware;
 const { verifyToken } = TokenMiddleware;
-const { verifyStaff, verifyAdmin } = routeCheckMiddleware;
+// const { verifyStaff, verifyAdmin } = routeCheckMiddleware;
 
-transactionRoute.post('/accounts/:accountnumber/debit', verifyToken, verifyStaff || verifyAdmin, validateTransaction, debitAccount);
-transactionRoute.post('/accounts/:accountnumber/credit', verifyToken, verifyStaff || verifyAdmin, validateTransaction, creditAccount);
+transactionRoute.post('/accounts/:accountnumber/debit', verifyToken, validateTransaction, debitAccount);
+transactionRoute.post('/accounts/:accountnumber/credit', verifyToken, validateTransaction, creditAccount);
 transactionRoute.get('/accounts/:accountnumber/transactions', verifyToken, viewTransactions);
 transactionRoute.get('/transactions/:id', verifyToken, viewId);
 

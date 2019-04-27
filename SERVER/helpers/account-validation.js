@@ -18,7 +18,7 @@ class accountValidation {
 
   static validateAccount(account) {
     const accountSchema = {
-      type: joi.string().valid('saving', 'current'),
+      type: joi.string().valid('saving', 'current').required(),
       opening_balance: joi.number().required(),
     };
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import TransactionService from '../services/TransactionService';
 
 class transactions {
@@ -13,7 +14,10 @@ class transactions {
         data: response[0],
       }))
       .catch((err) => {
-        console.log(err);
+        res.status(400).json({
+          status: 400,
+          message: 'Unable to perform Transaction',
+        });
       });
   }
 
@@ -29,13 +33,15 @@ class transactions {
         data: response[0],
       }))
       .catch((err) => {
-        console.log(err);
+        res.status(400).json({
+          status: 400,
+          message: 'Unable to perform Transaction',
+        });
       });
   }
 
   static viewTransactions(req, res) {
     const { accountnumber } = req.params;
-    console.log(`${accountnumber}`);
     TransactionService
       .viewTransactions(accountnumber)
       .then(result => res.status(200).json({
@@ -50,7 +56,6 @@ class transactions {
 
   static viewId(req, res) {
     const { id } = req.params;
-    console.log(`${id}`);
     TransactionService
       .viewId(id)
       .then(result => res.status(200).json({

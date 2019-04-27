@@ -27,7 +27,7 @@ class UserController {
   }
 
   /**
-     * Lofin a new user
+     * Login a new user
      * @staticmethod
      * @param  {object} req - user object
      * @param {object} res - Response object

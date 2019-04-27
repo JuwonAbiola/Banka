@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
 import bcrypt from 'bcrypt';
 import moment from 'moment';
@@ -136,7 +137,7 @@ class queryProvider {
           }
         })
         .catch((error) => {
-          const messager = 'Error Finding User';
+          const message = 'Error Finding User';
           reject(error);
         });
     });

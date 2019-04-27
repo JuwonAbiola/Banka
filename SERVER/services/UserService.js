@@ -1,9 +1,7 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable camelcase */
 import jwt from 'jsonwebtoken';
 import config from '../config/index';
 import passwordValidator from '../helpers/ComparePassword';
-import queryProvider from '../models/query';
+import queryProvider from '../models/userQuery';
 
 /**
  * @exports
@@ -103,7 +101,7 @@ class UserService {
               };
               const data = {
                 status: 200,
-                message: 'Authentication Successful',
+                message: 'lOGIN Successful',
                 data: object,
                 token,
               };

@@ -8,32 +8,32 @@ import routeCheckMiddleware from '../middlewares/routeCheck';
 const accountroute = express.Router();
 
 const {
-  createAccount,
-  updateAccount,
-  deleteAccount,
-  viewAccount,
-  // listAccount,
-  // singleAccount,
+    createAccount,
+    updateAccount,
+    deleteAccount,
+    viewAccount,
+    viewAccountnum,
+    listAccount,
+
+    // listAccount,
+    // singleAccount,
 } = accountController;
 const { verifyToken } = TokenMiddleware;
 const {
-  // verifyStaff,
-  verifyAdmin,
+    verifyStaff,
+    verifyAdmin,
 } = routeCheckMiddleware;
 
 const {
-  validateAccount,
-  validateUpdate,
+    validateAccount,
+    validateUpdate,
 } = accountMiddleware;
 
-accountroute.post('/accounts',
-  verifyToken,
-  validateAccount, createAccount);
-// accountroute.get('/accounts/', verifyToken, verifyStaff || verifyAdmin, listAccount);
-// accountroute.get('/accounts/:accountNumber', verifyToken, verifyStaff || verifyAdmin, singleAccount);
-accountroute.patch('/accounts/:accountnumber', verifyToken, verifyAdmin, validateUpdate, updateAccount);
-accountroute.delete('/accounts/:accountnumber', verifyToken, verifyAdmin, deleteAccount);
-accountroute.get('/user/:email/accounts', verifyToken, viewAccount);
-
+accountroute.post('/accounts', verifyToken, validateAccount, createAccount);
+accountroute.get('/accounts/', listAccount);
+accountroute.patch('/accounts/:accountnumber([0-9]+)', verifyToken, validateUpdate, updateAccount);
+accountroute.delete('/accounts/:accountnumber([0-9]+)', verifyToken, verifyToken, verifyAdmin, deleteAccount);
+accountroute.get('/accounts/:accountnumber([0-9]+)', verifyToken, viewAccountnum);
+accountroute.get('/user/:email("/[^a-zA-Z0-9\s]/", "")/accounts', verifyToken, viewAccount);
 
 export default accountroute;

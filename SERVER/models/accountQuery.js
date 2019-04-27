@@ -2,7 +2,6 @@
 /* eslint-disable radix */
 import moment from 'moment';
 import db from '../connection/connect';
-import checker from '../helpers/checker';
 
 const obj = {};
 const err = {};
