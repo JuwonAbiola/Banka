@@ -7,44 +7,44 @@ import UserService from '../services/UserService';
  */
 
 class UserController {
-  static createUser(req, res) {
-    UserService
-      .saveUser(req.body)
-      .then(response => res.status(201).json(response))
-      .catch((err) => {
-        if (err.rowCount >= 1) {
-          return res.status(400).json({
-            status: 400,
-            message: `User with this email ${
+    static createUser(req, res) {
+        UserService
+            .saveUser(req.body)
+            .then(response => res.status(201).json(response))
+            .catch((err) => {
+                if (err.rowCount >= 1) {
+                    return res.status(400).json({
+                        status: 400,
+                        message: `User with this email ${
               err.rows[0].email
             } exists already`,
-          });
-        }
-        return res.status(400).json({
-          message: 'Could not save user',
-        });
-      });
-  }
+                    });
+                }
+                return res.status(400).json({
+                    message: 'Could not save user',
+                });
+            });
+    }
 
-  /**
+    /**
      * Login a new user
      * @staticmethod
      * @param  {object} req - user object
      * @param {object} res - Response object
      * @return {json} res.json
      */
-  static loginUser(req, res) {
-    const {
-      email,
-      password,
-    } = req.body;
-    UserService
-      .validateUserLogin(email, password)
-      .then(response => res.status(200).json(response))
-      .catch(err => res.status(400).json({
-        responseMessage: err,
-      }));
-  }
+    static loginUser(req, res) {
+        const {
+            email,
+            password,
+        } = req.body;
+        UserService
+            .validateUserLogin(email, password)
+            .then(response => res.status(200).json(response))
+            .catch(err => res.status(400).json({
+                responseMessage: err,
+            }));
+    }
 }
 
 export default UserController;
