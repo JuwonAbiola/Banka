@@ -18,9 +18,7 @@ class userValidation {
             firstname: joi
                 .string().trim().regex(/^[A-Za-z]*$/).error(() => 'please enter a valid First name not less than 3 letters')
                 .min(3)
-
                 .required(),
-
             lastname: joi
                 .string().trim().regex(/^[A-Za-z]*$/).error(() => 'please enter a valid Last name not less than 3 letters')
                 .min(3)

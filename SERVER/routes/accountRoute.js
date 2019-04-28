@@ -30,10 +30,10 @@ const {
 } = accountMiddleware;
 
 accountroute.post('/accounts', verifyToken, validateAccount, createAccount);
-accountroute.get('/accounts/', listAccount);
-accountroute.patch('/accounts/:accountnumber([0-9]+)', verifyToken, validateUpdate, updateAccount);
+accountroute.get('/accounts/', verifyToken, verifyAdmin || verifyStaff, listAccount);
+accountroute.patch('/accounts/:accountnumber([0-9]+)', verifyToken, verifyAdmin || verifyStaff, validateUpdate, updateAccount);
 accountroute.delete('/accounts/:accountnumber([0-9]+)', verifyToken, verifyToken, verifyAdmin, deleteAccount);
 accountroute.get('/accounts/:accountnumber([0-9]+)', verifyToken, viewAccountnum);
-accountroute.get('/user/:email("/[^a-zA-Z0-9\s]/", "")/accounts', verifyToken, viewAccount);
+accountroute.get('/user/:email/accounts', verifyToken, verifyToken, verifyAdmin || verifyStaff, viewAccount);
 
 export default accountroute;

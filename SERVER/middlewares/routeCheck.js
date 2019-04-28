@@ -28,11 +28,11 @@ class routeCheckMiddleware {
 
     static verifyAdmin(req, res, next) {
         const { is_admin } = req.decoded;
-        console.log(is_admin)
         Authorization.checkAdmin(is_admin).then(() => next()).catch(() => res.status(403).json({
             status: 403,
             message: 'User cannot Visit this route',
         }));
     }
 }
+
 export default routeCheckMiddleware;

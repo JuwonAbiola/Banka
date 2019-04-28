@@ -13,12 +13,19 @@ const {
   viewTransactions,
   viewId,
 } = transactionController;
-const { validateTransaction } = transactionMiddleware;
-const { verifyToken } = TokenMiddleware;
-// const { verifyStaff, verifyAdmin } = routeCheckMiddleware;
+const {
+  validateTransaction,
+} = transactionMiddleware;
+const {
+  verifyToken,
+} = TokenMiddleware;
+const {
+  verifyStaff,
+  verifyAdmin,
+} = routeCheckMiddleware;
 
-transactionRoute.post('/accounts/:accountnumber/debit', verifyToken, validateTransaction, debitAccount);
-transactionRoute.post('/accounts/:accountnumber/credit', verifyToken, validateTransaction, creditAccount);
+transactionRoute.post('/transactions/:accountnumber/debit', verifyToken, verifyStaff, validateTransaction, debitAccount);
+transactionRoute.post('/transactions/:accountnumber/credit', verifyToken, verifyStaff, validateTransaction, creditAccount);
 transactionRoute.get('/accounts/:accountnumber/transactions', verifyToken, viewTransactions);
 transactionRoute.get('/transactions/:id', verifyToken, viewId);
 

@@ -46,6 +46,7 @@ class transactions {
       .viewTransactions(accountnumber)
       .then(result => res.status(200).json({
         status: 200,
+        message: 'Transactions fetched  Successfully',
         data: result.rows,
       }))
       .catch(err => res.status(400).json({
@@ -60,11 +61,12 @@ class transactions {
       .viewId(id)
       .then(result => res.status(200).json({
         status: 200,
+        message: 'Transaction Detail fetched Successfully',
         data: result.rows,
       }))
       .catch(err => res.status(400).json({
         status: 400,
-        message: err,
+        message: 'Transaction details could not be fetched',
       }));
   }
 }
