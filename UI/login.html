@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <title>Banka | Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
@@ -15,21 +16,39 @@
     <div class="toppad">
         <h1 class="text-center text-orange">
             <a id="logo" href="index.html">BA₦Ka</a></h1>
-        <h2 class="text-center text-grey">Register to <span id="logo">BA₦Ka</span></h2>
+        <h2 class="text-center text-grey">Login to <span id="logo">BA₦Ka</span></h2>
         <div class="form-card">
             <!-- <form action="action_page.php"> -->
             <div class="container">
                 <label for="email"><b>Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" required>
+                <input type="text" name="email" required>
 
                 <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
+                <input type="password" name="psw" required>
                 <hr>
-                <button id="login" onclick="login()" class="registerbtn">Sign In</button>
+                <button id="login" onclick="openNav()" class="registerbtn">Sign In</button>
             </div>
             <!-- </form> -->
         </div>
+
+        <!-- The overlay -->
+        <div id="myNav" class="overlay">
+
+            <!-- Button to close the overlay navigation -->
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+            <!-- Overlay content -->
+            <div class="overlay-content">
+                <a class="text-orange" href="admin.html">Admin<sup></sup></a>
+                <a class="text-orange" href="staff.html">Staff<sup></sup></a>
+                <a class="text-orange" href="dashboard.html">Customer<sup></sup></a>
+            </div>
+
+        </div>
+
+        <!-- Use any element to open/show the overlay navigation menu -->
         <br />
+
         <div class="other_option text-center">
             <p>Don't have an account yet? <a href="signup.html">Create Account</a>.</p>
         </div>
