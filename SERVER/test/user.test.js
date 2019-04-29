@@ -34,7 +34,7 @@ describe('UNIT TESTS FOR AUTHENTICATION CONTROLLER', () => {
             .property('message')
             .to.equals('Registration successful');
           res.body.should.have.property('status').to.equals(201);
-          res.body.should.have.property('token').to.be.a('string');
+          // res.body.should.have.property('token').to.be.a('string');
           done();
         });
     });
@@ -49,11 +49,10 @@ describe('UNIT TESTS FOR AUTHENTICATION CONTROLLER', () => {
         .end((err, res) => {
           res.body.should.have
             .property('message')
-            .to.equals('lOGIN Successful');
-          token = res.body.token;
+            .to.equals('Login Successful');
+          token = res.body.data.token;
           res.body.should.have.property('status').to.equals(200);
           res.body.should.have.property('data').to.be.an('object');
-          res.body.should.have.property('token').to.be.a('string');
           done();
         });
     });

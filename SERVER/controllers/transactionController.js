@@ -11,12 +11,19 @@ class transactions {
       .then(response => res.status(200).json({
         status: 200,
         message: 'Account credited Successfully',
-        data: response[0],
+        data: {
+          transactionId: response.id,
+          accountNumber: response.account_number,
+          amount: response.amount,
+          cashier: response.cashier,
+          transactionType: response.type,
+          accountBalance: response.new_balance,
+        },
       }))
       .catch((err) => {
         res.status(400).json({
           status: 400,
-          message: 'Unable to perform Transaction',
+          message: err.responseMessage,
         });
       });
   }
@@ -30,12 +37,19 @@ class transactions {
       .then(response => res.status(200).json({
         status: 200,
         message: 'Account debited Successfully',
-        data: response[0],
+        data: {
+          transactionId: response.id,
+          accountNumber: response.account_number,
+          amount: response.amount,
+          cashier: response.cashier,
+          transactionType: response.type,
+          accountBalance: response.new_balance,
+        },
       }))
       .catch((err) => {
         res.status(400).json({
           status: 400,
-          message: 'Unable to perform Transaction',
+          message: err.responseMessage,
         });
       });
   }

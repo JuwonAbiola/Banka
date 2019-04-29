@@ -14,12 +14,14 @@ class AccountController {
       .then(result => res.status(201).json({
         status: 201,
         message: 'Account created successfully',
-        accountNumber: result.account_number,
-        firstName: req.decoded.firstname,
-        lastName: req.decoded.lastname,
-        email: req.decoded.email,
-        type: req.decoded.type,
-        openingBalance: result.opening_balance,
+        data: {
+          accountNumber: result.account_number,
+          firstName: req.decoded.firstname,
+          lastName: req.decoded.lastname,
+          email: req.decoded.email,
+          type: result.type,
+          openingBalance: result.opening_balance,
+        },
       }))
       .catch(err => res.status(400).json({
         message: err,
@@ -34,7 +36,10 @@ class AccountController {
       .then(response => res.status(200).json({
         status: 200,
         message: 'Account Updated Successfully',
-        data: response[0],
+        data: {
+          accountNumber: response.rows[0].account_number,
+          status: response.rows[0].status,
+        },
       }))
       .catch(err => res.status(400).json({
         status: 400,
@@ -46,14 +51,13 @@ class AccountController {
     const { accountnumber } = req.params;
     AccountService
       .deleteAccount(accountnumber)
-      .then(response => res.status(200).json({
-        status: 200,
-        message: 'Account Deleted Successfully',
-        data: response[0],
-      }))
-      .catch(err => res.status(400).json({
+      .then(response => res.status(400).json({
         status: 400,
         message: err,
+      }))
+      .catch(err => res.status(200).json({
+        status: 200,
+        message: 'Account Deleted Successfully',
       }));
   }
 

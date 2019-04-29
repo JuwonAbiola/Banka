@@ -15,11 +15,11 @@ before(() => {
       .request(server)
       .post('/api/v1/auth/signin')
       .send({
-        email: 'gygyi@gmail.com',
+        email: 'gygyijj@gmail.com',
         password: 'danjuma',
       })
       .end((err, res) => {
-        token = res.body.token;
+        token = res.body.data.token;
         res.body.should.have.property('status').to.equals(200);
         res.body.should.have.property('data').to.be.an('object');
         done();
@@ -49,7 +49,7 @@ describe('UNIT TESTS FOR DUMMY TRANSACTION CONTROLLERS', () => {
 
   describe('/POST REQUEST', () => {
     it('it should credit an account ', (done) => {
-      const accountNumber = 8547446461;
+      const accountNumber = 5865098282;
       chai
         .request(server)
         .post(`/api/v1/transactions/${accountNumber}/credit`)
@@ -85,7 +85,7 @@ describe('UNIT TESTS FOR DUMMY TRANSACTION CONTROLLERS', () => {
 
   describe('/POST REQUEST', () => {
     it('it should debit an account ', (done) => {
-      const accountNumber = 8547446461;
+      const accountNumber = 5865098282;
       chai
         .request(server)
         .post(`/api/v1/transactions/${accountNumber}/debit`)

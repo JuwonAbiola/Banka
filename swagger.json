@@ -1,0 +1,600 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "description": "Banka is a light-weight core banking application that powers banking operations like account creation, customer deposit and withdrawals.",
+        "version": "1.0.0-oas3",
+        "title": "BA₦Ka",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": "abiolaoluwajuwon@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "tags": [{
+        "name": "Users",
+        "description": "API Endpoints for users in the system"
+    }, {
+        "name": "Accounts",
+        "description": "API Endpoints for Bank Accounts in the system"
+    }, {
+        "name": "Transactions",
+        "description": "API Endpoints for Credit & Debit Transactions"
+    }],
+    "paths": {
+        "/auth/signup": {
+            "post": {
+                "tags": ["Users"],
+                "summary": "Registers a new user in the app",
+                "description": "",
+                "operationId": "signupUser",
+                "responses": {
+                    "201": {
+                        "description": "Registration successful"
+                    },
+                    "400": {
+                        "description": " User with this email abiolaoluwajuwon@gmail.com exists already"
+                    }
+                },
+                "security": [{
+                    "bearerAuth": []
+                }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    },
+                    "description": "User object that needs to be registered in the app",
+                    "required": true
+                }
+            }
+        },
+        "/auth/signin": {
+            "post": {
+                "tags": ["Users"],
+                "summary": "Login with existing credentials",
+                "description": "",
+                "operationId": "loginUser",
+                "responses": {
+                    "200": {
+                        "description": "Successfully login a user"
+                    },
+                    "401": {
+                        "description": "A User Profile Cannot be Found!"
+                    },
+                    "422": {
+                        "description": "Validation error | Bad request"
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Login"
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Login"
+                            }
+                        }
+                    },
+                    "description": "User object credentials that needs to sign in",
+                    "required": true
+                }
+            }
+        },
+        "/accounts": {
+            "get": {
+                "tags": ["Accounts"],
+                "summary": "Get all bank accounts - filter by status [active, dormant]",
+                "description": "N.B Only staff can perform this operation",
+                "operationId": "getAccount",
+                "parameters": [{
+                    "name": "status",
+                    "in": "query",
+                    "description": "Status values that need to be considered for filter",
+                    "required": false,
+                    "explode": true,
+                    "schema": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": ["dormant", "active"],
+                            "default": "all"
+                        }
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successfully fetched all bank accounts"
+                    },
+                    "204": {
+                        "description": "No account waas found"
+                    },
+                    "401": {
+                        "description": "Uauthorized - Specify a JWToken in the header"
+                    },
+                    "403": {
+                        "description": "Only Staff;s can perform this operation"
+                    }
+                },
+                "security": [{
+                    "bearerAuth": []
+                }]
+            },
+            "post": {
+                "tags": ["Accounts"],
+                "summary": "Create a bank account",
+                "description": "",
+                "operationId": "createAccount",
+                "responses": {
+                    "200": {
+                        "description": "Successfully Created an Account"
+                    },
+                    "400": {
+                        "description": "A User Already have an Account or Account does exist or validation error"
+                    },
+                    "401": {
+                        "description": "Uauthorized - Specify a JWToken in the header"
+                    }
+                },
+                "security": [{
+                    "bearerAuth": []
+                }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateAccount"
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateAccount"
+                            }
+                        }
+                    },
+                    "description": "User object credentials that needs to sign in",
+                    "required": true
+                }
+            }
+        },
+        "/accounts/{accountNumber}": {
+            "parameters": [{
+                "name": "accountNumber",
+                "in": "path",
+                "description": "Account number of the account we want to work with",
+                "required": true,
+                "schema": {
+                    "type": "integer"
+                }
+            }],
+            "patch": {
+                "tags": ["Accounts"],
+                "summary": "Activate or deactivate an account.",
+                "description": "N.B - Only Staff's can perform this operation",
+                "operationId": "patchAccountByAccounNumber",
+                "responses": {
+                    "200": {
+                        "description": "Status was successfully updated"
+                    },
+                    "400": {
+                        "description": "Account number doesn't exist | Validation error"
+                    },
+                    "401": {
+                        "description": "Uauthorized - Specify a JWToken in the header"
+                    },
+                    "403": {
+                        "description": "User is not permitted to perform this operation"
+                    }
+                },
+                "security": [{
+                    "bearerAuth": []
+                }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "required": ["status"],
+                                "properties": {
+                                    "status": {
+                                        "type": "string",
+                                        "example": "dormant"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "description": "Specify a bank account status (active, dormant)"
+                }
+            },
+            "get": {
+                "tags": ["Accounts"],
+                "summary": "Get a specific account",
+                "description": "N.B - a client can get only his/her account while a staff can get all accounts",
+                "operationId": "getAccountByAccountNumber",
+                "responses": {
+                    "200": {
+                        "description": "Status was successfully updated"
+                    },
+                    "400": {
+                        "description": "Account number doesn't exist"
+                    },
+                    "401": {
+                        "description": "Uauthorized - Specify a JWToken in the header"
+                    },
+                    "403": {
+                        "description": "User is not permitted to perform this operation"
+                    }
+                },
+                "security": [{
+                    "bearerAuth": []
+                }]
+            },
+            "delete": {
+                "tags": ["Accounts"],
+                "summary": "Deletes an account",
+                "description": "N.B - Only Staff's can perform this operation",
+                "operationId": "deleteAccount",
+                "responses": {
+                    "200": {
+                        "description": "Status was successfully deleted"
+                    },
+                    "400": {
+                        "description": "Account number doesn't exist"
+                    },
+                    "401": {
+                        "description": "Uauthorized - Specify a JWToken in the header"
+                    },
+                    "403": {
+                        "description": "User is not permitted to perform this operation"
+                    }
+                },
+                "security": [{
+                    "bearerAuth": []
+                }]
+            }
+        },
+        "/user/{email}/accounts": {
+            "get": {
+                "tags": ["Accounts"],
+                "summary": "View all accounts owned by a specific user (client)​",
+                "description": "N.B - user can only get personal accounts",
+                "operationId": "userAccounts",
+                "parameters": [{
+                    "name": "email",
+                    "in": "path",
+                    "description": "An email address of a user",
+                    "required": true,
+                    "schema": {
+                        "type": "string",
+                        "format": "email"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Accounts successfully fetched"
+                    },
+                    "400": {
+                        "description": "Account number doesn't exist"
+                    },
+                    "401": {
+                        "description": "Uauthorized - Specify a JWToken in the header"
+                    },
+                    "403": {
+                        "description": "User is not permitted to perform this operation"
+                    }
+                },
+                "security": [{
+                    "bearerAuth": []
+                }]
+            }
+        },
+        "/transactions/{accountNumber}/debit": {
+            "post": {
+                "tags": ["Transactions"],
+                "summary": "Debit a bank account.",
+                "description": "",
+                "operationId": "debitAccount",
+                "parameters": [{
+                    "in": "path",
+                    "name": "accountNumber",
+                    "description": "account number of user to perform transaction on",
+                    "required": true,
+                    "schema": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Transaction was succesful"
+                    },
+                    "400": {
+                        "description": "Account number doesn't exist | Validation Error"
+                    },
+                    "401": {
+                        "description": "Uauthorized - Specify a JWToken in the header"
+                    },
+                    "403": {
+                        "description": "User is not permitted to perform this operation"
+                    }
+                },
+                "security": [{
+                    "bearerAuth": []
+                }],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/debitAccountBody"
+                }
+            }
+        },
+        "/transactions/{accountNumber}/credit": {
+            "post": {
+                "tags": ["Transactions"],
+                "summary": "Credit a bank account.",
+                "description": "",
+                "operationId": "creditAccount",
+                "parameters": [{
+                    "in": "path",
+                    "name": "accountNumber",
+                    "description": "account number of user to perform transaction on",
+                    "required": true,
+                    "schema": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Transaction was succesful"
+                    },
+                    "400": {
+                        "description": "Account number doesn't exist | Validation Error"
+                    },
+                    "401": {
+                        "description": "Uauthorized - Specify a JWToken in the header"
+                    },
+                    "403": {
+                        "description": "User is not permitted to perform this operation"
+                    }
+                },
+                "security": [{
+                    "bearerAuth": []
+                }],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/debitAccountBody"
+                }
+            }
+        },
+        "/accounts/{accountNumber}/transactions": {
+            "get": {
+                "tags": ["Transactions"],
+                "summary": "View all transactions owned by a specific user",
+                "description": "N.B - user can only get personal transactions while staff can get all transactions",
+                "operationId": "userTransactions",
+                "parameters": [{
+                    "name": "accountNumber",
+                    "in": "path",
+                    "description": "Account number of the account we want to work with",
+                    "required": true,
+                    "schema": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Transactions successfully fetched"
+                    },
+                    "400": {
+                        "description": "Account number doesn't exist"
+                    },
+                    "401": {
+                        "description": "Uauthorized - Specify a JWToken in the header"
+                    },
+                    "403": {
+                        "description": "User is not permitted to perform this operation"
+                    }
+                },
+                "security": [{
+                    "bearerAuth": []
+                }]
+            }
+        },
+        "/transactions/{transactionId}": {
+            "get": {
+                "tags": ["Transactions"],
+                "summary": "Get a specific transaction",
+                "description": "N.B - a client can get only his/her transactions while a staff can get all transactions",
+                "operationId": "getTransactioById",
+                "parameters": [{
+                    "name": "transactionId",
+                    "in": "path",
+                    "description": "Id of transaction you want to get",
+                    "required": true,
+                    "schema": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Transactions successfully fetched"
+                    },
+                    "400": {
+                        "description": "Account number doesn't exist"
+                    },
+                    "401": {
+                        "description": "Uauthorized - Specify a JWToken in the header"
+                    },
+                    "403": {
+                        "description": "User is not permitted to perform this operation"
+                    }
+                },
+                "security": [{
+                    "bearerAuth": []
+                }]
+            }
+        }
+    },
+    "externalDocs": {
+        "description": "Find out more about Swagger",
+        "url": "http://swagger.io"
+    },
+    "servers": [{
+        "url": "https://virtserver.swaggerhub.com/oluwajhay/banka-app/1.0.0"
+    }, {
+        "url": "http://virtserver.swaggerhub.com/oluwajhay/banka-app/1.0.0"
+    }],
+    "components": {
+        "requestBodies": {
+            "debitAccountBody": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object",
+                            "required": ["amount"],
+                            "properties": {
+                                "amount": {
+                                    "type": "string",
+                                    "example": "100"
+                                }
+                            }
+                        }
+                    },
+                    "application/xml": {
+                        "schema": {
+                            "type": "object",
+                            "required": ["amount"],
+                            "properties": {
+                                "amount": {
+                                    "type": "string",
+                                    "example": "100"
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "Amount to be debitted from the account"
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "apiKey",
+                "scheme": "bearer",
+                "description": "JWT token is received after registering/login, input format: \"Bearer \\<token\\>\"",
+                "name": "x-access-token",
+                "in": "header",
+                "bearerFormat": "JWT"
+            }
+        },
+        "schemas": {
+            "CreateAccount": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "example": "savings"
+                    },
+                    "balance": {
+                        "type": "number",
+                        "example": "10000"
+                    }
+                },
+                "xml": {
+                    "name": "CreateAccount"
+                }
+            },
+            "Login": {
+                "type": "object",
+                "required": ["email", "password"],
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "example": "abiolaoluwajuwon@gmail.com"
+                    },
+                    "password": {
+                        "type": "string",
+                        "example": "password"
+                    }
+                },
+                "xml": {
+                    "name": "Login"
+                }
+            },
+            "User": {
+                "type": "object",
+                "required": ["firstName", "lastName", "email", "password"],
+                "properties": {
+                    "firstName": {
+                        "type": "string",
+                        "example": "abiola"
+                    },
+                    "lastName": {
+                        "type": "string",
+                        "example": "oluwajuwon"
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "example": "abiolaoluwajuwon@gmail.com"
+                    },
+                    "password": {
+                        "type": "string",
+                        "example": "password"
+                    },
+                    "confirmPassword": {
+                        "type": "string",
+                        "example": "password"
+                    }
+                },
+                "xml": {
+                    "name": "User"
+                }
+            },
+            "Staff": {
+                "type": "object",
+                "required": ["firstName", "lastName", "email", "password", "type", "isAdmin"],
+                "properties": {
+                    "firstName": {
+                        "type": "string",
+                        "example": "abiola"
+                    },
+                    "lastName": {
+                        "type": "string",
+                        "example": "oluwajuwon"
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "example": "abiolaoluwajuwon@gmail.com"
+                    },
+                    "password": {
+                        "type": "string",
+                        "example": "password"
+                    },
+                    "isAdmin": {
+                        "type": "boolean",
+                        "example": true
+                    }
+                },
+                "xml": {
+                    "name": "Staff"
+                }
+            }
+        }
+    }
+}

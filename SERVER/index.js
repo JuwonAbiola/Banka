@@ -1,7 +1,9 @@
 import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
+import swagger from 'swagger-ui-express';
 import version from './version/v1';
+import swaggerDocument from '../swagger';
 
 const app = express();
 

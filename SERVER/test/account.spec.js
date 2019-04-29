@@ -15,11 +15,11 @@ before(() => {
       .request(server)
       .post('/api/v1/auth/signin')
       .send({
-        email: 'gygyi@gmail.com',
+        email: 'gygyijj@gmail.com',
         password: 'danjuma',
       })
       .end((err, res) => {
-        token = res.body.token;
+        token = res.body.data.token;
         res.body.should.have.property('status').to.equals(200);
         res.body.should.have.property('data').to.be.an('object');
         done();
@@ -73,7 +73,7 @@ describe('UNIT TESTS FOR Accounts', () => {
          */
     describe('/GET REQUEST', () => {
       it('it should GET all accounts details', (done) => {
-        const accounNumber = 8547446461;
+        const accounNumber = 5865098282;
         chai
           .request(server)
           .get(`/api/v1/accounts/${accounNumber}`)
@@ -111,7 +111,7 @@ describe('UNIT TESTS FOR Accounts', () => {
          */
     describe('/GET REQUEST', () => {
       it('it should GET all Transactions details', (done) => {
-        const accounNumber = 3028644677;
+        const accounNumber = 5865098282;
         chai
           .request(server)
           .get(`/api/v1/accounts/${accounNumber}/transactions`)
@@ -288,7 +288,7 @@ describe('UNIT TESTS FOR Accounts', () => {
 
   describe('/PATCH REQUEST', () => {
     it('it should patch account ', (done) => {
-      const accounNumber = 8547446461;
+      const accounNumber = 5865098282;
       chai
         .request(server)
         .patch(`/api/v1/accounts/${accounNumber}`)
@@ -338,7 +338,7 @@ describe('UNIT TESTS FOR Accounts', () => {
           status: 'active',
         })
         .end((err, res) => {
-          res.should.have.status(403);
+          res.should.have.status(400);
 
 
           done();
@@ -370,7 +370,7 @@ describe('UNIT TESTS FOR Accounts', () => {
         .delete(`/api/v1/accounts/${accounNumber}`)
         .set('x-access-token', token)
         .end((err, res) => {
-          res.should.have.status(400);
+          res.should.have.status(200);
           res.body.should.have
             .property('message');
 

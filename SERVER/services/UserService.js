@@ -56,8 +56,8 @@ class UserService {
           const data = {
             status: 201,
             message: 'Registration successful',
-            token,
             data: {
+              token,
               id: res.id,
               firstName: res.firstname,
               lastName: res.lastname,
@@ -93,17 +93,18 @@ class UserService {
                 expiresIn: 86400,
               });
               const object = {
-                firstname: res.rows[0].firstname,
-                lastname: res.rows[0].lastname,
+                token,
+                id: res.rows[0].id,
+                firstName: res.rows[0].firstname,
+                lastName: res.rows[0].lastname,
                 email: res.rows[0].email,
                 type: res.rows[0].type,
                 is_admin: res.rows[0].is_admin,
               };
               const data = {
                 status: 200,
-                message: 'lOGIN Successful',
+                message: 'Login Successful',
                 data: object,
-                token,
               };
               resolve(data);
             })
