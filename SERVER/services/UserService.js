@@ -59,9 +59,9 @@ class UserService {
             data: {
               token,
               id: res.id,
-              firstName: res.firstname,
-              lastName: res.lastname,
-              email: res.email,
+              firstName: res.firstname.trim(),
+              lastName: res.lastname.trim(),
+              email: res.email.trim(),
               type: res.type,
               isAdmin: res.is_admin,
             },
